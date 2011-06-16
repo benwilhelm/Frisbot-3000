@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game time:</b>
+  <%= @game.game_time %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @game.location %>
+</p>
+
+<p>
+  <b>Polling cutoff:</b>
+  <%= @game.polling_cutoff %>
+</p>
+
+<p>
+  <b>Min players:</b>
+  <%= @game.min_players %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  game_time: 2011-06-15 20:10:07
+  location: MyText
+  polling_cutoff: 2011-06-15 20:10:07
+  min_players: 1
+
+two:
+  game_time: 2011-06-15 20:10:07
+  location: MyText
+  polling_cutoff: 2011-06-15 20:10:07
+  min_players: 1
