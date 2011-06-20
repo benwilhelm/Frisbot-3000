@@ -2,28 +2,37 @@ require 'test_helper'
 
 class GameTest < ActiveSupport::TestCase
 
-  test "game attributes must not be empty" do
-    game = Game.new
-    assert game.invalid?
-    assert game.errors[:game_time].any?
-    assert game.errors[:polling_cutoff].any?
-    assert game.errors[:location].any?
-    assert game.errors[:min_players].any?
-  end
-  
   test "game time must be after now" do 
     game = Game.new(:location => "Winnemac Park" ,
                     :min_players => 6 ,
-                    :polling_cutoff => "2011-07-19 23:00"
+                    :polling_cutoff => 1.day.from_now
                     )
 
-    @game_time = Time.now - 1.day
-    game.game_time = @game_time.strftime("%Y-%m-%d %H:%M")
-    assert game.invalid?
-    assert_equal "must be after " + Time.now.strftime("%Y-%m-%d %H:%M"), game.errors[:game_time].join('; ') ;
+    game.game_time = 1.day.ago
+    game.invalid?
+    assert_present game.errors[:game_time]
     
-    @game_time = Time.now + 5.days
-    game.game_time = @game_time.strftime("%Y-%m-%d %H:%M")
+    game.game_time = 5.days.from_now 
+    assert game.valid?
+    
+  end
+  
+  test "polling cutoff must be after now and prior to game time" do 
+    game = Game.new(
+                    :location => "Winnemac Park" ,
+                    :min_players => 6 ,
+                    :game_time => 5.days.from_now
+                    )
+
+    game.polling_cutoff = 6.days.from_now
+    game.invalid?
+    assert_present game.errors[:polling_cutoff]
+    
+    game.polling_cutoff = 1.day.ago
+    game.invalid?
+    assert_present game.errors[:polling_cutoff]
+    
+    game.polling_cutoff = 4.days.from_now
     assert game.valid?
     
   end
