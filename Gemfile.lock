@@ -30,6 +30,9 @@ GEM
     activesupport (3.0.8)
     arel (2.0.10)
     builder (2.1.2)
+    date_validator (0.6.2)
+      activemodel (< 3.2.0, >= 3.0.0)
+    diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
@@ -60,6 +63,23 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.9.2)
+    remarkable (4.0.0.alpha4)
+      rspec (>= 2.0.0.alpha11)
+    remarkable_activemodel (4.0.0.alpha4)
+      remarkable (~> 4.0.0.alpha4)
+      rspec (>= 2.0.0.alpha11)
+    remarkable_date_validator (0.5.0)
+      date_validator (>= 0.5.2)
+      remarkable (>= 4.0.0.alpha4)
+      remarkable_activemodel (>= 4.0.0.alpha4)
+    rspec (2.6.0.rc6)
+      rspec-core (= 2.6.0.rc6)
+      rspec-expectations (= 2.6.0.rc6)
+      rspec-mocks (= 2.6.0.rc6)
+    rspec-core (2.6.0.rc6)
+    rspec-expectations (2.6.0.rc6)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0.rc6)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -69,5 +89,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  date_validator
   mysql2 (~> 0.2.6)
   rails (= 3.0.8)
+  remarkable_date_validator

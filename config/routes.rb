@@ -1,6 +1,4 @@
 Frisbot::Application.routes.draw do
-  resources :players
-
   resources :games
 
   # The priority is based upon order of creation:

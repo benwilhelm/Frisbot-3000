@@ -7,6 +7,9 @@ gem 'rails', '3.0.8'
 
 gem 'mysql2', '~> 0.2.6'
 
+gem 'date_validator'
+gem 'remarkable_date_validator'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
