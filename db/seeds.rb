@@ -9,16 +9,34 @@
 Game.delete_all
 
 Game.create(
-            :game_time => DateTime.parse("2011-06-25 10:00") ,
-            :polling_cutoff => DateTime.parse("2011-06-24 23:00") ,
-            :location => "Welles Park, Montrose and Western, Chicago" ,
+            :game_time => DateTime.parse("2011-06-11 10:00") ,
+            :polling_cutoff => DateTime.parse("2011-06-10 23:00") ,
+            :location => "Welles Park" ,
+            :address => "2400 W. Montrose Ave.<br>Chicago, IL, 60625" ,
             :min_players => 6
            )
 
 Game.create(
             :game_time => DateTime.parse("2011-07-02 10:00") ,
             :polling_cutoff => DateTime.parse("2011-07-01 23:00") ,
-            :location => "Winnemac Park, Damen and Foster, Chicago" ,
+            :location => "Welles Park" ,
+            :address => "2400 W. Montrose Ave.<br>Chicago, IL, 60625" ,
+            :min_players => 6
+           )
+
+Game.create(
+            :game_time => DateTime.parse("2011-06-24 10:00") ,
+            :polling_cutoff => DateTime.parse("2011-06-23 23:00") ,
+            :location => "Winnemac Park" ,
+            :address => "5200 N. Damen Ave.<br>Chicago, IL, 60625" ,
+            :min_players => 6
+           )           
+           
+Game.create(
+            :game_time => DateTime.parse("2011-07-12 10:00") ,
+            :polling_cutoff => DateTime.parse("2011-07-11 23:00") ,
+            :location => "Winnemac Park" ,
+            :address => "5200 N. Damen Ave.<br>Chicago, IL, 60625" ,
             :min_players => 6
            )           
            

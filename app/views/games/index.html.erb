@@ -1,29 +1,23 @@
-<h1>Listing games</h1>
+<div id='gameList'>
+  <h2>Upcoming games</h2>
+  
+  <table>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= link_to game.game_time.to_s(:game_month_day), game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table><!-- #gameList -->
+    
+  <br />
+  
+  <%= link_to 'New Game', new_game_path %>
 
-<table>
-  <tr>
-    <th>Game time</th>
-    <th>Location</th>
-    <th>Polling cutoff</th>
-    <th>Min players</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+</div>
 
-<% @games.each do |game| %>
-  <tr>
-    <td><%= game.game_time %></td>
-    <td><%= game.location %></td>
-    <td><%= game.polling_cutoff %></td>
-    <td><%= game.min_players %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Game', new_game_path %>
+<div id="nextGame">
+  <h1>Next Game</h1>
+  <p><%= @next_game.game_time.to_s(:game_time_long) %></p>
+</div>

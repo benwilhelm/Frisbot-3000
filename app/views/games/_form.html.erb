@@ -17,7 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :location %><br />
-    <%= f.text_area :location, :rows => 6 %>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, :rows => 3 %>
   </div>
   <div class="field">
     <%= f.label :polling_cutoff %><br />
