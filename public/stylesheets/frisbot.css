@@ -18,7 +18,12 @@ body {
   line-height: normal ;
   margin : 0 ;
 }
-
+  
+  #siteTitle a,
+  #siteTitle a:visited {
+    color : #FFF ;
+    text-decoration: none ;
+  }
 
 
 
@@ -29,6 +34,7 @@ body {
   float : right ;
   margin : 1em .5em 0 ;
   padding: 0 ;
+  z-index: 1000 ;
 }
 
   #userMenu li {
@@ -57,6 +63,7 @@ body {
     left : 0 ;
     background-color: #333 ;
     display: none ;
+    z-index: 1001 ;
   }
   
   #userMenu li:hover ul {
@@ -97,6 +104,7 @@ body {
   font-size: 2em ;
   line-height: normal ;
   padding : .5em ;
+  position: relative ;
 }
 
 #summary p {

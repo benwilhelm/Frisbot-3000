@@ -1,6 +1,6 @@
 class CreatePlayers < ActiveRecord::Migration
   def self.up
-    drop_table :players
+    execute "DROP TABLE IF EXISTS players"
     create_table :players do |t|
       t.string :fname
       t.string :lname

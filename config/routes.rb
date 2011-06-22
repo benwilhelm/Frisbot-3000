@@ -54,7 +54,7 @@ Frisbot::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "games#index", :as => '/' 
+  root :to => "games#show", :as => '/' 
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,9 +1,11 @@
 class GamesController < ApplicationController
+
+  before_filter :get_games, :only => [:index, :show]
+
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.where("game_time > :date", date: Time.now).all
-    @next_game = @games.first 
+    @game = @games.first 
     @undecided = Player.all
 
     respond_to do |format|
@@ -15,7 +17,14 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.xml
   def show
-    @game = Game.find(params[:id])
+    if params[:id]
+      @game = Game.find(params[:id])
+    else
+      @game = @games.first 
+    end
+    
+    @yesses = @game.rsvps.where("resp = 'yes'")
+    @nos = @game.rsvps.where("resp = 'no'")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -82,4 +91,12 @@ class GamesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  protected 
+  def get_games
+    @games = Game.where("game_time > :date", date: Time.now).all
+  end
+  
+  
 end

@@ -130,5 +130,25 @@ Player.create(
                 )
 }           
 
- 
+
+Rsvp.delete_all 
+
+Game.find(:all).each do |game| 
+  Player.find(:all,:order=>'lname',:limit=>7).each do |player|
+    Rsvp.create(
+                :game => game ,
+                :player => player ,
+                :resp => 'yes' ,
+                :auth_token => 'erlkjslkje' 
+                )
+  end
+  Player.find(:all,:order=>'lname',:limit=>5,:offset=>7).each do |player|
+    Rsvp.create(
+                :game => game ,
+                :player => player ,
+                :resp => 'no' ,
+                :auth_token => 'erlkjslkje' 
+                )
+  end
+end
               

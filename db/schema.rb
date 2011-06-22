@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110622014728) do
+ActiveRecord::Schema.define(:version => 20110622060623) do
 
   create_table "games", :force => true do |t|
     t.datetime "game_time"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20110622014728) do
   end
 
   create_table "rsvps", :force => true do |t|
-    t.integer  "player"
-    t.integer  "game"
+    t.integer  "player_id"
+    t.integer  "game_id"
     t.string   "resp"
     t.string   "auth_token"
     t.datetime "created_at"

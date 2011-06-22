@@ -1,0 +1,6 @@
+        <h2><%= game.game_time.to_s(:game_time_long) %></h2>
+        <p>
+          <strong><%= game.location %></strong>
+          <br><%= sanitize(game.address) %>
+          <br><a id='fieldMap' href="#">view map</a>
+        </p>

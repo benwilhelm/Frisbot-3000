@@ -1,25 +1,73 @@
-<p id="notice"><%= notice %></p>
+      <div id="nextGame">
 
-<p>
-  <b>Game time:</b>
-  <%= @game.game_time %>
-</p>
-
-<p>
-  <strong><%= @game.location %></strong><br>
-  <%= @game.address %>
-</p>
-
-<p>
-  <b>Polling cutoff:</b>
-  <%= @game.polling_cutoff %>
-</p>
-
-<p>
-  <b>Min players:</b>
-  <%= @game.min_players %>
-</p>
-
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+        <h1>Next Game</h1>
+        <%= render @game %>
+        
+        <div id="comments">
+        
+          <div class="comment">
+            <p class="comment-head">Ben W. (organizer) says:</p>  
+            <div class="comment-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div><!-- .comment-body -->
+          </div><!-- .comment -->
+        
+          <div class="comment">
+            <p class="comment-head">Jen G. says:</p>  
+            <div class="comment-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div><!-- .comment-body -->
+          </div><!-- .comment -->
+        
+          <div class="comment">
+            <p class="comment-head">Yoni P. says:</p>  
+            <div class="comment-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div><!-- .comment-body -->
+          </div><!-- .comment -->
+        
+          <form id="commentForm">
+            <label>Leave a Comment:</label>
+            <textarea rows="5" cols="40"></textarea>
+            <br><input id='submitComment' name='submitComment' type="submit" value="Post Comment" />
+          </form>
+        
+        </div><!-- #comments -->
+      </div><!-- #nextGame -->
+      
+      <div id="responses">
+      
+        <div id="summary">
+          <p id='numPlayers'>7 Players</p>
+          <p id='gameStatus'>Game tentatively on.</p>
+          <p id='pollingStatus'>Polling closes Friday, June 24 at 11:00 PM</p>
+        </div>
+                
+        <dl id="yesses">
+          <dt>Playing</dt>
+          <% if @yesses %>
+            <% @yesses.each do |rsvp| %>
+            <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
+            <% end %>
+          <% end %>
+        </dl>
+        
+        <dl id="nos">
+          <dt>Not Playing</dt>
+          <% if @nos %>
+            <% @nos.each do |rsvp| %>
+            <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
+            <% end %>
+          <% end %>
+        </dl>
+        
+        <dl id="unreplied">
+          <dt>Undecided</dt>
+          <% if @undecided %>
+            <% @undecided.each do |player| %>
+            <dd><%= player.fname.capitalize + " " + player.lname.capitalize %></dd>
+            <% end %>
+          <% end %>
+        </dl>
+      </div><!-- #responses -->
+      <div class="clear"></div>
