@@ -1,0 +1,29 @@
+<h1>Listing rsvps</h1>
+
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Game</th>
+    <th>Resp</th>
+    <th>Auth token</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rsvps.each do |rsvp| %>
+  <tr>
+    <td><%= rsvp.player %></td>
+    <td><%= rsvp.game %></td>
+    <td><%= rsvp.resp %></td>
+    <td><%= rsvp.auth_token %></td>
+    <td><%= link_to 'Show', rsvp %></td>
+    <td><%= link_to 'Edit', edit_rsvp_path(rsvp) %></td>
+    <td><%= link_to 'Destroy', rsvp, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rsvp', new_rsvp_path %>

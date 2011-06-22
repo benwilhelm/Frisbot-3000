@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  player: 1
+  game: 1
+  resp: MyString
+  auth_token: MyString
+
+two:
+  player: 1
+  game: 1
+  resp: MyString
+  auth_token: MyString

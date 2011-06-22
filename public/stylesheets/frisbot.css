@@ -27,13 +27,14 @@ body {
 
 #userMenu {
   float : right ;
-  margin-top : 1em ;
-  margin-bottom : 0 ;
+  margin : 1em .5em 0 ;
+  padding: 0 ;
 }
 
   #userMenu li {
     float : left ;
     list-style: none ;
+    position: relative ;
   }
   
   #userMenu a,
@@ -48,7 +49,27 @@ body {
     text-decoration: underline ;
   }
 
+  #userMenu ul {
+    margin : 0 0 0 .5em ;
+    padding : 0 ;
+    position: absolute ;
+    top : 100% ;
+    left : 0 ;
+    background-color: #333 ;
+    display: none ;
+  }
+  
+  #userMenu li:hover ul {
+    display: block ;
+  }
 
+  #userMenu ul li {
+    float : none ;
+    white-space: nowrap ;
+  }
+
+/* =Content 
+============================================== */
 
 #content {
   margin : 0 auto ;

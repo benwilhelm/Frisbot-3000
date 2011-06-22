@@ -11,7 +11,14 @@
     <div id="header">
       <p id="siteTitle">Frisbot 3000</p>
       <ul id="userMenu">
-        <li><a href="#">More Games</a></li>
+        <li>
+          <a href="#">More Games</a>
+          <ul>
+          <% @games.each do |game| %>
+            <li><%= link_to game.game_time.to_s(:game_month_day) + ' - ' + game.location, game %></li>
+          <% end %>
+          </ul>
+        </li>
         <li><a href="#">Log In</a></li>
         <li><a href="#">Sign Up</a></li>
         <li><a href="#">Help</a></li>
@@ -22,12 +29,10 @@
     <div id="content">
       <div id="nextGame">
         <h1>Next Game</h1>
-        <h2>Sat, June 25, 2011 - 10:00 AM</h2>
+        <h2><%= @next_game.game_time.to_s(:game_time_long) %></h2>
         <p>
-          <strong>Winnemac Park</strong>
-          <br>Damen Ave. and Foster Ave.
-          <br>Chicago, IL 60625
-          <br>(behind the school)
+          <strong><%= @next_game.location %></strong>
+          <br><%= sanitize(@next_game.address) %>
           <br><a id='fieldMap' href="#">view map</a>
         </p>
         
@@ -100,24 +105,11 @@
         
         <dl id="unreplied">
           <dt>Undecided</dt>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>
-          <dd>Some Player</dd>        
+          
+          <% @undecided.each do |player| %>
+          <dd><%= player.fname + " " + player.lname %></dd>
+          <% end %>
+          
         </dl>
       </div><!-- #responses -->
       <div class="clear"></div>

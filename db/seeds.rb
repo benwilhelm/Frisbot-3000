@@ -6,103 +6,129 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+############
+# SEED GAMES
+
 Game.delete_all
 
 Game.create(
-            :game_time => DateTime.parse("2011-06-11 10:00") ,
-            :polling_cutoff => DateTime.parse("2011-06-10 23:00") ,
+            :game_time => 7.days.from_now ,
+            :polling_cutoff => 6.days.from_now ,
             :location => "Welles Park" ,
-            :address => "2400 W. Montrose Ave.<br>Chicago, IL, 60625" ,
+            :address => "2400 W. Montrose Ave.<br />Chicago, IL, 60625" ,
             :min_players => 6
            )
 
 Game.create(
-            :game_time => DateTime.parse("2011-07-02 10:00") ,
-            :polling_cutoff => DateTime.parse("2011-07-01 23:00") ,
+            :game_time => 21.days.from_now ,
+            :polling_cutoff => 20.days.from_now ,
             :location => "Welles Park" ,
-            :address => "2400 W. Montrose Ave.<br>Chicago, IL, 60625" ,
+            :address => "2400 W. Montrose Ave.<br />Chicago, IL, 60625" ,
             :min_players => 6
            )
 
 Game.create(
-            :game_time => DateTime.parse("2011-06-24 10:00") ,
-            :polling_cutoff => DateTime.parse("2011-06-23 23:00") ,
+            :game_time => 1.day.ago ,
+            :polling_cutoff => 2.days.ago ,
             :location => "Winnemac Park" ,
-            :address => "5200 N. Damen Ave.<br>Chicago, IL, 60625" ,
+            :address => "5200 N. Damen Ave.<br />Chicago, IL, 60625" ,
             :min_players => 6
            )           
            
 Game.create(
-            :game_time => DateTime.parse("2011-07-12 10:00") ,
-            :polling_cutoff => DateTime.parse("2011-07-11 23:00") ,
+            :game_time => 14.days.from_now ,
+            :polling_cutoff => 13.days.from_now ,
             :location => "Winnemac Park" ,
-            :address => "5200 N. Damen Ave.<br>Chicago, IL, 60625" ,
+            :address => "5200 N. Damen Ave.<br />Chicago, IL, 60625" ,
             :min_players => 6
-           )           
+           )  
            
+                    
+##############
+# SEED PLAYERS
 
-# Player.create(
-#               :fname => "Ben" ,
-#               :lname => "Wilhelm" ,
-#               :email => "benjamin.m.wilhelm@gmail.com" ,
-#               :role => 'administrator' ,
-#               :password => 'password'
-#               )
-#               
-# Player.create(
-#               :fname => "Jen" ,
-#               :lname => "Gadda" ,
-#               :email => "email@email.com" ,
-#               :role => 'player' ,
-#               :password => 'password'
-#               )
-#               
-# Player.create(
-#               :fname => "Scotty" ,
-#               :lname => "Iseri" ,
-#               :email => "email@email.com" ,
-#               :role => 'player' ,
-#               :password => 'password'
-#               )
-#               
-# Player.create(
-#               :fname => "Lucas" ,
-#               :lname => "Merino" ,
-#               :email => "email@email.com" ,
-#               :role => 'player' ,
-#               :password => 'password'
-#               )
-#               
-# Player.create(
-#               :fname => "Sean" ,
-#               :lname => "O'Brien" ,
-#               :email => "email@email.com" ,
-#               :role => 'player' ,
-#               :password => 'password'
-#               )
-#               
-# Player.create(
-#               :fname => "Yoni" ,
-#               :lname => "Pizer" ,
-#               :email => "email@email.com" ,
-#               :role => 'player' ,
-#               :password => 'password'
-#               )
-#               
-# Player.create(
-#               :fname => "Adrian" ,
-#               :lname => "Danzig" ,
-#               :email => "email@email.com" ,
-#               :role => 'player' ,
-#               :password => 'password'
-#               )
-#               
-# Player.create(
-#               :fname => "Tommy" ,
-#               :lname => "Rapley" ,
-#               :email => "email@email.com" ,
-#               :role => 'player' ,
-#               :password => 'password'
-#               )
-#               
+Player.delete_all           
+
+Player.create(
+              :fname => "Ben" ,
+              :lname => "Wilhelm" ,
+              :email => "benjamin.m.wilhelm@gmail.com" ,
+              :role => 'administrator' ,
+              :password => 'password'
+              )
+              
+Player.create(
+              :fname => "Jen" ,
+              :lname => "Gadda" ,
+              :email => "email@email.com" ,
+              :role => 'player' ,
+              :password => 'password'
+              )
+              
+Player.create(
+              :fname => "Scotty" ,
+              :lname => "Iseri" ,
+              :email => "email@email.com" ,
+              :role => 'player' ,
+              :password => 'password'
+              )
+              
+Player.create(
+              :fname => "Lucas" ,
+              :lname => "Merino" ,
+              :email => "email@email.com" ,
+              :role => 'player' ,
+              :password => 'password'
+              )
+              
+Player.create(
+              :fname => "Sean" ,
+              :lname => "O'Brien" ,
+              :email => "email@email.com" ,
+              :role => 'player' ,
+              :password => 'password'
+              )
+              
+Player.create(
+              :fname => "Yoni" ,
+              :lname => "Pizer" ,
+              :email => "email@email.com" ,
+              :role => 'player' ,
+              :password => 'password'
+              )
+              
+Player.create(
+              :fname => "Adrian" ,
+              :lname => "Danzig" ,
+              :email => "email@email.com" ,
+              :role => 'player' ,
+              :password => 'password'
+              )
+              
+Player.create(
+              :fname => "Tommy" ,
+              :lname => "Rapley" ,
+              :email => "email@email.com" ,
+              :role => 'player' ,
+              :password => 'password'
+              )
+
+25.times {
+
+  fname = RandSmartPass(3)
+  lname = RandSmartPass(4)
+  emailUser = RandSmartPass(5)
+  emailDomain = RandSmartPass(8) + '.com'
+  email = emailUser + '@' + emailDomain
+  
+  Player.create(
+                :fname => fname ,
+                :lname => lname ,
+                :email => email ,
+                :role => 'player' ,
+                :password => 'password'
+                )
+}           
+
+ 
               

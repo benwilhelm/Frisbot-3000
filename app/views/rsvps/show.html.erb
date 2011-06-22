@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Player:</b>
+  <%= @rsvp.player %>
+</p>
+
+<p>
+  <b>Game:</b>
+  <%= @rsvp.game %>
+</p>
+
+<p>
+  <b>Resp:</b>
+  <%= @rsvp.resp %>
+</p>
+
+<p>
+  <b>Auth token:</b>
+  <%= @rsvp.auth_token %>
+</p>
+
+
+<%= link_to 'Edit', edit_rsvp_path(@rsvp) %> |
+<%= link_to 'Back', rsvps_path %>

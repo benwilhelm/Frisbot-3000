@@ -2,8 +2,9 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.where("game_time > :date", date: Time.now).order('game_time').all
+    @games = Game.where("game_time > :date", date: Time.now).all
     @next_game = @games.first 
+    @undecided = Player.all
 
     respond_to do |format|
       format.html # index.html.erb
