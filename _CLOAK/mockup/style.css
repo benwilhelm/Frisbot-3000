@@ -1,0 +1,129 @@
+body {
+  font-size: .9em ;
+  font-family: sans-serif ;
+  line-height: 1.3em ;
+  margin : 0 ;
+  padding : 0 ;
+}
+
+#header {
+  background-color: #333 ;
+  color : #FFF ;
+  padding : .5em ;
+}
+
+#siteTitle {
+  float : left ;
+  font-size: 2.5em ;
+  line-height: normal ;
+  margin : 0 ;
+}
+
+
+
+
+/* =Nav Menu 
+============================================== */
+
+#userMenu {
+  float : right ;
+  margin-top : 1em ;
+  margin-bottom : 0 ;
+}
+
+  #userMenu li {
+    float : left ;
+    list-style: none ;
+  }
+  
+  #userMenu a,
+  #userMenu a:visited {
+    color : #FFF ;
+    display: block ;
+    padding : 3px 15px 0 ;
+    text-decoration: none ;
+  }
+  
+  #userMenu a:hover {
+    text-decoration: underline ;
+  }
+
+
+
+#content {
+  margin : 0 auto ;
+  padding : 2em 0 ;
+  position: relative ;
+  width : 900px ;
+}
+
+#nextGame {
+  float : left ;
+  width : 440px ;
+}
+
+#commentForm label {
+  display: block ;
+}
+
+#responses {
+  float : right ;
+  width : 440px ;
+}
+
+#summary {
+  background-color: #FF8 ;
+  font-size: 2em ;
+  line-height: normal ;
+  padding : .5em ;
+}
+
+#summary p {
+  margin : .5em 0 ;
+}
+
+#pollingStatus {
+  font-size: 20px ;
+}
+
+#responses dl {
+  margin : 2em 15px ;
+}
+
+#responses dt {
+  font-weight: bold ;
+  font-size: 1.3em ;
+  margin-bottom: .3em ;
+}
+
+#responses dd {
+  margin-left : 0 ;
+}
+
+#yesses {
+  font-size: 1.5em ;
+  line-height: normal ;
+}
+
+  #yesses dd {
+    margin : .2em 0 ;
+  }
+
+/* =Footer 
+============================================== */
+
+#footer {
+  background-color : #333 ;
+  color : #FFF ;
+  padding: .5em ;
+  text-align: center ;
+}
+
+
+
+/* =Misc 
+============================================== */
+
+.clear {
+  clear : both ;
+}
