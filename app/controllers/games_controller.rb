@@ -25,6 +25,31 @@ class GamesController < ApplicationController
     
     @yesses = @game.rsvps.where("resp = 'yes'")
     @nos = @game.rsvps.where("resp = 'no'")
+    
+    if @game.polling_cutoff.future? 
+      if @yesses.count < @game.min_players
+        needed = @game.min_players - @yesses.count
+        @game_status = "Still waiting for " + needed.to_s + " more."
+      else
+        @game_status = "Game Tentatively On"
+      end
+      @summary_class = "game-maybe"
+      @polling_status = "Polling closes " + @game.polling_cutoff.to_s(:cutoff_time) 
+    else
+      if @yesses.count < @game.min_players
+        @game_status = "No Game"
+        @summary_class = "game-off"
+        @polling_status = "See you next time."
+      else
+        @game_status = "Game On"
+        @summary_class = "game-on"
+        if @game.location
+          @polling_status = "See you at " + @game.location + "!"
+        else
+          @polling_status = "See you on the field!"
+        end
+      end
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -95,7 +120,7 @@ class GamesController < ApplicationController
   
   protected 
   def get_games
-    @games = Game.where("game_time > :date", date: Time.now).all
+    @games = Game.where("game_time >= :date", date: Time.now).all
   end
   
   

@@ -107,6 +107,22 @@ body {
   position: relative ;
 }
 
+  #summary.game-maybe {
+    background-color: #FF8 ;
+  
+  }
+  
+  #summary.game-off {
+    background-color: #800 ;
+    color : #FFF ;  
+  }
+  
+  #summary.game-on {
+    background-color: #1A1 ;
+    color : #FFF ;
+  
+  }
+  
 #summary p {
   margin : .5em 0 ;
 }

@@ -11,37 +11,37 @@
 
 Game.delete_all
 
-Game.create(
-            :game_time => 7.days.from_now ,
-            :polling_cutoff => 6.days.from_now ,
-            :location => "Welles Park" ,
-            :address => "2400 W. Montrose Ave.<br />Chicago, IL, 60625" ,
-            :min_players => 6
-           )
+game1 = Game.new
+game1.game_time = 1.day.from_now 
+game1.polling_cutoff = 1.days.ago 
+game1.location = "Welles Park" 
+game1.address = "2400 W. Montrose Ave.<br />Chicago, IL, 60625" 
+game1.min_players = 6
+game1.save(false) 
 
-Game.create(
-            :game_time => 21.days.from_now ,
-            :polling_cutoff => 20.days.from_now ,
-            :location => "Welles Park" ,
-            :address => "2400 W. Montrose Ave.<br />Chicago, IL, 60625" ,
-            :min_players => 6
-           )
+game2 = Game.new 
+game2.game_time = 21.days.from_now 
+game2.polling_cutoff = 20.days.from_now 
+game2.location = "Welles Park" 
+game2.address = "2400 W. Montrose Ave.<br />Chicago, IL, 60625" 
+game2.min_players = 6
+game2.save(false) 
 
-Game.create(
-            :game_time => 1.day.ago ,
-            :polling_cutoff => 2.days.ago ,
-            :location => "Winnemac Park" ,
-            :address => "5200 N. Damen Ave.<br />Chicago, IL, 60625" ,
-            :min_players => 6
-           )           
-           
-Game.create(
-            :game_time => 14.days.from_now ,
-            :polling_cutoff => 13.days.from_now ,
-            :location => "Winnemac Park" ,
-            :address => "5200 N. Damen Ave.<br />Chicago, IL, 60625" ,
-            :min_players => 6
-           )  
+game3 = Game.new
+game3.game_time = 1.day.ago 
+game3.polling_cutoff = 2.days.ago 
+game3.location = "Winnemac Park" 
+game3.address = "5200 N. Damen Ave.<br />Chicago, IL, 60625" 
+game3.min_players = 6
+game3.save(false) 
+
+game4 = Game.new 
+game4.game_time = 14.days.from_now 
+game4.polling_cutoff = 13.days.from_now 
+game4.location = "Winnemac Park" 
+game4.address = "5200 N. Damen Ave.<br />Chicago, IL, 60625" 
+game4.min_players = 6
+game4.save(false) 
            
                     
 ##############
@@ -57,61 +57,61 @@ Player.create(
               :password => 'password'
               )
               
-Player.create(
-              :fname => "Jen" ,
-              :lname => "Gadda" ,
-              :email => "email@email.com" ,
-              :role => 'player' ,
-              :password => 'password'
-              )
-              
-Player.create(
-              :fname => "Scotty" ,
-              :lname => "Iseri" ,
-              :email => "email@email.com" ,
-              :role => 'player' ,
-              :password => 'password'
-              )
-              
-Player.create(
-              :fname => "Lucas" ,
-              :lname => "Merino" ,
-              :email => "email@email.com" ,
-              :role => 'player' ,
-              :password => 'password'
-              )
-              
-Player.create(
-              :fname => "Sean" ,
-              :lname => "O'Brien" ,
-              :email => "email@email.com" ,
-              :role => 'player' ,
-              :password => 'password'
-              )
-              
-Player.create(
-              :fname => "Yoni" ,
-              :lname => "Pizer" ,
-              :email => "email@email.com" ,
-              :role => 'player' ,
-              :password => 'password'
-              )
-              
-Player.create(
-              :fname => "Adrian" ,
-              :lname => "Danzig" ,
-              :email => "email@email.com" ,
-              :role => 'player' ,
-              :password => 'password'
-              )
-              
-Player.create(
-              :fname => "Tommy" ,
-              :lname => "Rapley" ,
-              :email => "email@email.com" ,
-              :role => 'player' ,
-              :password => 'password'
-              )
+#Player.create(
+#              :fname => "Jen" ,
+#              :lname => "Gadda" ,
+#              :email => "email@email.com" ,
+#              :role => 'player' ,
+#              :password => 'password'
+#              )
+#              
+#Player.create(
+#              :fname => "Scotty" ,
+#              :lname => "Iseri" ,
+#              :email => "email@email.com" ,
+#              :role => 'player' ,
+#              :password => 'password'
+#              )
+#              
+#Player.create(
+#              :fname => "Lucas" ,
+#              :lname => "Merino" ,
+#              :email => "email@email.com" ,
+#              :role => 'player' ,
+#              :password => 'password'
+#              )
+#              
+#Player.create(
+#              :fname => "Sean" ,
+#              :lname => "O'Brien" ,
+#              :email => "email@email.com" ,
+#              :role => 'player' ,
+#              :password => 'password'
+#              )
+#              
+#Player.create(
+#              :fname => "Yoni" ,
+#              :lname => "Pizer" ,
+#              :email => "email@email.com" ,
+#              :role => 'player' ,
+#              :password => 'password'
+#              )
+#              
+#Player.create(
+#              :fname => "Adrian" ,
+#              :lname => "Danzig" ,
+#              :email => "email@email.com" ,
+#              :role => 'player' ,
+#              :password => 'password'
+#              )
+#              
+#Player.create(
+#              :fname => "Tommy" ,
+#              :lname => "Rapley" ,
+#              :email => "email@email.com" ,
+#              :role => 'player' ,
+#              :password => 'password'
+#              )
 
 25.times {
 

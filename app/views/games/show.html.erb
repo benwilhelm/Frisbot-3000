@@ -37,10 +37,10 @@
       
       <div id="responses">
       
-        <div id="summary">
-          <p id='numPlayers'>7 Players</p>
-          <p id='gameStatus'>Game tentatively on.</p>
-          <p id='pollingStatus'>Polling closes Friday, June 24 at 11:00 PM</p>
+        <div id="summary" class="<%= @summary_class %>">
+          <p id='numPlayers'><%= @yesses.count %> Players</p>
+          <p id='gameStatus'><%= @game_status %></p>
+          <p id='pollingStatus'><%= @polling_status %></p>
         </div>
                 
         <dl id="yesses">
