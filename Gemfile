@@ -6,9 +6,10 @@ gem 'rails', '3.0.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', '~> 0.2.6'
+gem 'devise'
 
-gem 'date_validator'
-gem 'remarkable_date_validator'
+#gem 'date_validator'
+#gem 'remarkable_date_validator'
 
 # Use unicorn as the web server
 # gem 'unicorn'
