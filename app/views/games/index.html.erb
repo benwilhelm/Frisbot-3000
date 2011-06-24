@@ -1,1 +1,25 @@
 <h1>Welcome to the Frisbot</h1>
+
+<h2>Upcoming Games:</h2>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Location</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @games.each do |game| %>
+  <tr>
+    <td><%= game.game_time.to_s(:game_time_long) %></td>
+    <td><%= game.location %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'New Game', new_game_path %>

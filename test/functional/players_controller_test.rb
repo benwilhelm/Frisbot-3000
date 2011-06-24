@@ -3,6 +3,13 @@ require 'test_helper'
 class PlayersControllerTest < ActionController::TestCase
   setup do
     @player = players(:one)
+    @update = {
+      :fname => 'Some' ,
+      :lname => 'Player' ,
+      :email => 'some@player.com' ,
+      :role => 'player' ,
+      :password => 'password'
+    }
   end
 
   test "should get index" do
@@ -18,7 +25,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should create player" do
     assert_difference('Player.count') do
-      post :create, :player => @player.attributes
+      post :create, :player => @update
     end
 
     assert_redirected_to player_path(assigns(:player))
@@ -35,7 +42,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should update player" do
-    put :update, :id => @player.to_param, :player => @player.attributes
+    put :update, :id => @player.to_param, :player => @update
     assert_redirected_to player_path(assigns(:player))
   end
 

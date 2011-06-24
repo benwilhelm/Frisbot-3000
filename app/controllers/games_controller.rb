@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  before_filter :get_games, :only => [:index, :show]
+  before_filter :get_games
 
   # GET /games
   # GET /games.xml
@@ -25,6 +25,7 @@ class GamesController < ApplicationController
     
     @yesses = @game.rsvps.where("resp = 'yes'")
     @nos = @game.rsvps.where("resp = 'no'")
+    @undecided = @game.rsvps.where("resp is NULL ")
     
     if @game.polling_cutoff.future? 
       if @yesses.count < @game.min_players
@@ -80,6 +81,14 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        Player.all.each do |player|
+          Rsvp.create(
+            :player_id => player.id ,
+            :game_id => @game.id ,
+            :auth_token => 'token'
+          )
+        end
+      
         format.html { redirect_to(@game, :notice => 'Game was successfully created.') }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
@@ -117,11 +126,6 @@ class GamesController < ApplicationController
     end
   end
   
-  
-  protected 
-  def get_games
-    @games = Game.where("game_time >= :date", date: Time.now).all
-  end
   
   
 end

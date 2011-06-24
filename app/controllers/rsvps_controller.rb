@@ -1,4 +1,7 @@
 class RsvpsController < ApplicationController
+
+  before_filter :get_games
+
   # GET /rsvps
   # GET /rsvps.xml
   def index

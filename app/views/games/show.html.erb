@@ -64,8 +64,8 @@
         <dl id="unreplied">
           <dt>Undecided</dt>
           <% if @undecided %>
-            <% @undecided.each do |player| %>
-            <dd><%= player.fname.capitalize + " " + player.lname.capitalize %></dd>
+            <% @undecided.each do |rsvp| %>
+            <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
             <% end %>
           <% end %>
         </dl>

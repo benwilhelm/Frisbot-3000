@@ -1,4 +1,7 @@
 class PlayersController < ApplicationController
+  before_filter :get_games
+
+
   # GET /players
   # GET /players.xml
   def index

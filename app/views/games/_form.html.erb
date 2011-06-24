@@ -28,8 +28,7 @@
     <%= f.datetime_select :polling_cutoff %>
   </div>
   <div class="field">
-    <%= f.label :min_players %><br />
-    <%= f.text_field :min_players %>
+    <%= f.label "Minimum Players" %><%= f.text_field :min_players, :size => 3 %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fname %><br />
+    <%= f.label "First Name" %><br />
     <%= f.text_field :fname %>
   </div>
   <div class="field">
-    <%= f.label :lname %><br />
+    <%= f.label "Last Name" %><br />
     <%= f.text_field :lname %>
   </div>
   <div class="field">
@@ -24,13 +24,12 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
-  </div>
-  <div class="field">
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
+
+    <%= f.hidden_field :role, :value => 'player' %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

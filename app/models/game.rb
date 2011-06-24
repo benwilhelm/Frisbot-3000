@@ -8,7 +8,6 @@ class Game < ActiveRecord::Base
   validate :polling_cutoff_is_future
   
   private 
-  
   def game_time_is_future
     self.errors.add(:game_time, "Game time must be in future") unless game_time.future?
   end

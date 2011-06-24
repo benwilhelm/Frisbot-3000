@@ -4,8 +4,8 @@ class GamesControllerTest < ActionController::TestCase
   setup do
     @game = games(:one)
     @update = {
-      :game_time => "2011-07-20 10:00" ,
-      :polling_cutoff => "2011-07-19 23:00" ,
+      :game_time => 7.days.from_now ,
+      :polling_cutoff => 6.days.from_now ,
       :location => "Winnemac Park" ,
       :min_players => 6
     }
@@ -24,6 +24,14 @@ class GamesControllerTest < ActionController::TestCase
 
   test "should create game" do
     assert_difference('Game.count') do
+      post :create, :game => @update
+    end
+
+    assert_redirected_to game_path(assigns(:game))
+  end
+
+  test "should create rsvp for each player" do
+    assert_difference('Rsvp.count',Player.count) do
       post :create, :game => @update
     end
 

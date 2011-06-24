@@ -3,6 +3,12 @@ require 'test_helper'
 class RsvpsControllerTest < ActionController::TestCase
   setup do
     @rsvp = rsvps(:one)
+    @update = {
+      :game_id => games(:one) ,
+      :player_id => players(:one) ,
+      :resp => 'yes' ,
+      :auth_token => 'token'
+    }
   end
 
   test "should get index" do
@@ -18,7 +24,7 @@ class RsvpsControllerTest < ActionController::TestCase
 
   test "should create rsvp" do
     assert_difference('Rsvp.count') do
-      post :create, :rsvp => @rsvp.attributes
+      post :create, :rsvp => @update
     end
 
     assert_redirected_to rsvp_path(assigns(:rsvp))
@@ -35,7 +41,7 @@ class RsvpsControllerTest < ActionController::TestCase
   end
 
   test "should update rsvp" do
-    put :update, :id => @rsvp.to_param, :rsvp => @rsvp.attributes
+    put :update, :id => @rsvp.to_param, :rsvp => @update
     assert_redirected_to rsvp_path(assigns(:rsvp))
   end
 

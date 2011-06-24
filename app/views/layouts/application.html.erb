@@ -12,7 +12,7 @@
       <p id="siteTitle"><%= link_to 'Frisbot 3000', '/' %></p>
       <ul id="userMenu">
         <li>
-          <a href="#">More Games</a>
+          <%= link_to "Games", '/' %>
           <ul>
           <% @games.each do |game| %>
             <li><%= link_to game.game_time.to_s(:game_month_day) + ' - ' + game.location, game %></li>
@@ -20,20 +20,22 @@
           </ul>
         </li>
         <li><a href="#">Log In</a></li>
-        <li><a href="#">Sign Up</a></li>
+        <li><%= link_to "Sign Up", "/players/new" %></li>
         <li><a href="#">Help</a></li>
       </ul>
       <div class="clear"></div>
     </div>
     
     <div id="content">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+      <%= yield %>
 
     </div><!-- #content -->
     
     <div id="footer">
-      <p>Frisbot 3000 Loves you!</p>
+      <p>Frisbot 3000 loves you!</p>
     </div>
 
 	</body>
