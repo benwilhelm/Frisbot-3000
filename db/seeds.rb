@@ -137,29 +137,14 @@ game4.save(false)
 
 Rsvp.delete_all 
 
-Game.all.each do |game|
-  Player.all.each do |player|
-    Rsvp.create(
-      :player_id => player.id ,
-      :game_id => game.id 
-    )
-  end
-end
-
 Game.find(:all).each do |game| 
   rand_num = rand(2)
   num_players = 5+rand_num
   Player.find(:all,:order=>'lname',:limit=>num_players).each do |player|
-    Rsvp.where(:player_id => player.id, :game_id => game.id).each do |rsvp|
-      rsvp.resp = 'yes'
-      rsvp.save
-    end
+    Rsvp.create(:player_id => player.id, :game_id => game.id, :resp => true)
   end
   Player.find(:all,:order=>'lname',:limit=>5,:offset=>num_players).each do |player|
-    Rsvp.where(:player_id => player.id, :game_id => game.id).each do |rsvp|
-      rsvp.resp = 'no'
-      rsvp.save
-    end
+    Rsvp.create(:player_id => player.id, :game_id => game.id, :resp => false)
   end
 end
               

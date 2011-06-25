@@ -45,29 +45,25 @@
                 
         <dl id="yesses">
           <dt>Playing</dt>
-          <% if @yesses %>
+          <% if @yesses.count > 0 %>
             <% @yesses.each do |rsvp| %>
             <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
             <% end %>
+          <% else %>
+          <dd>No replies yet.</dd>
           <% end %>
         </dl>
         
         <dl id="nos">
           <dt>Not Playing</dt>
-          <% if @nos %>
+          <% if @nos.count > 0 %>
             <% @nos.each do |rsvp| %>
             <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
             <% end %>
+          <% else %>
+          <dd>No replies yet.</dd>
           <% end %>
         </dl>
         
-        <dl id="unreplied">
-          <dt>Undecided</dt>
-          <% if @undecided %>
-            <% @undecided.each do |rsvp| %>
-            <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
-            <% end %>
-          <% end %>
-        </dl>
       </div><!-- #responses -->
       <div class="clear"></div>

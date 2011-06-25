@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
   before_filter :get_games
-
+  #no layout for ajax calls
+  layout proc { |c| c.request.xhr? ? false : "application" }
 
   # GET /players
   # GET /players.xml
@@ -28,7 +29,6 @@ class PlayersController < ApplicationController
   # GET /players/new.xml
   def new
     @player = Player.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @player }

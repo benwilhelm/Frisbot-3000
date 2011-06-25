@@ -23,9 +23,8 @@ class GamesController < ApplicationController
       @game = @games.first 
     end
     
-    @yesses = @game.rsvps.where("resp = 'yes'")
-    @nos = @game.rsvps.where("resp = 'no'")
-    @undecided = @game.rsvps.where("resp is NULL ")
+    @yesses = @game.rsvps.where("resp = 1")
+    @nos = @game.rsvps.where("resp = 0")
     
     if @game.polling_cutoff.future? 
       if @yesses.count < @game.min_players
