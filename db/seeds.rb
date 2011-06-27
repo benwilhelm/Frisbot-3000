@@ -12,15 +12,18 @@
 # SEED PLAYERS
 
 Player.delete_all           
+User.delete_all
 
-Player.create(
-              :fname => "Ben" ,
-              :lname => "Wilhelm" ,
-              :email => "benjamin.m.wilhelm@gmail.com" ,
-              :role => 'administrator' ,
-              :password => 'password'
-              )
+ben = User.new
+ben.fname = "Ben" 
+ben.lname = "Wilhelm" 
+ben.email = "benjamin.m.wilhelm@gmail.com" 
+ben.confirmed_at = '2011-06-26 22:16:49' 
+ben.password = 'mun81kie' 
+ben.password_confirmation = 'mun81kie' 
+ben.save(false)
 
+ 
 25.times {
 
   fname = RandSmartPass(3)
@@ -29,72 +32,15 @@ Player.create(
   emailDomain = RandSmartPass(8) + '.com'
   email = emailUser + '@' + emailDomain
   
-  Player.create(
-                :fname => fname ,
-                :lname => lname ,
-                :email => email ,
-                :role => 'player' ,
-                :password => 'password'
-                )
+  user = User.new
+  user.fname = fname 
+  user.lname = lname 
+  user.email = email 
+  user.password = 'password'
+  user.confirmed_at = '2011-06-26 22:16:49'
+  user.save(false)
 }           
               
-#Player.create(
-#              :fname => "Jen" ,
-#              :lname => "Gadda" ,
-#              :email => "email@email.com" ,
-#              :role => 'player' ,
-#              :password => 'password'
-#              )
-#              
-#Player.create(
-#              :fname => "Scotty" ,
-#              :lname => "Iseri" ,
-#              :email => "email@email.com" ,
-#              :role => 'player' ,
-#              :password => 'password'
-#              )
-#              
-#Player.create(
-#              :fname => "Lucas" ,
-#              :lname => "Merino" ,
-#              :email => "email@email.com" ,
-#              :role => 'player' ,
-#              :password => 'password'
-#              )
-#              
-#Player.create(
-#              :fname => "Sean" ,
-#              :lname => "O'Brien" ,
-#              :email => "email@email.com" ,
-#              :role => 'player' ,
-#              :password => 'password'
-#              )
-#              
-#Player.create(
-#              :fname => "Yoni" ,
-#              :lname => "Pizer" ,
-#              :email => "email@email.com" ,
-#              :role => 'player' ,
-#              :password => 'password'
-#              )
-#              
-#Player.create(
-#              :fname => "Adrian" ,
-#              :lname => "Danzig" ,
-#              :email => "email@email.com" ,
-#              :role => 'player' ,
-#              :password => 'password'
-#              )
-#              
-#Player.create(
-#              :fname => "Tommy" ,
-#              :lname => "Rapley" ,
-#              :email => "email@email.com" ,
-#              :role => 'player' ,
-#              :password => 'password'
-#              )
-
-
 
 ############
 # SEED GAMES
@@ -140,11 +86,18 @@ Rsvp.delete_all
 Game.find(:all).each do |game| 
   rand_num = rand(2)
   num_players = 5+rand_num
-  Player.find(:all,:order=>'lname',:limit=>num_players).each do |player|
-    Rsvp.create(:player_id => player.id, :game_id => game.id, :resp => true)
+  User.find(:all,:order=>'rand()',:limit=>num_players).each do |user|
+    Rsvp.create(:user_id => user.id, :game_id => game.id, :resp => true)
   end
-  Player.find(:all,:order=>'lname',:limit=>5,:offset=>num_players).each do |player|
-    Rsvp.create(:player_id => player.id, :game_id => game.id, :resp => false)
+  User.find(:all,:order=>'rand()',:limit=>5,:offset=>num_players).each do |user|
+    Rsvp.create(:user_id => user.id, :game_id => game.id, :resp => false)
   end
+  
+  comment_rand = rand(2)
+  num_comments = 2 + comment_rand
+  User.find(:all, :order=>'rand()', :limit => num_comments).each do |user|
+    Comment.create(:user_id => user.id, :game_id => game.id, :comment_text => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  end
+  
 end
               

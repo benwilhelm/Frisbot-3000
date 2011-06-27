@@ -24,7 +24,17 @@ body {
     color : #FFF ;
     text-decoration: none ;
   }
+  
+#welcome {
+  float : right ;
+  margin : 0 1.5em ;
+  font-size: small ;
+}
 
+#header a,
+#header a:visited {
+  color : #FFF ;
+}
 
 
 /* =Nav Menu 
@@ -32,7 +42,8 @@ body {
 
 #userMenu {
   float : right ;
-  margin : 1em .5em 0 ;
+  clear : right ;
+  margin : .5em .5em 0 ;
   padding: 0 ;
   z-index: 1000 ;
 }
@@ -177,15 +188,11 @@ body {
 
 /* =Forms 
 ============================================== */
-input, textarea {
-
-  font-size: 1.5em ;
-  line-height: normal ;
-}
-
-input[type='text'], 
-input[type='password'], 
+input, 
 textarea {
+
+  font-size: 1.3em ;
+  line-height: normal ;
   background-color: #eee ;
   width : 95% ;
   border : none ;
@@ -198,8 +205,22 @@ textarea {
 }
 
 input[type='submit'] {
+  width : auto ;
   position: relative ;
   margin : .5em auto ;
+  border : 1px solid #666 ;
+  cursor: pointer ;
+  background-color: #ddd ;
+}
+
+  input[type='submit']:hover {
+    background-color: #AAA ;
+    color : #FFF ;
+  }
+
+input[type='checkbox'] ,
+input[type='radio'] {
+  width : auto ;
 }
 
 label {

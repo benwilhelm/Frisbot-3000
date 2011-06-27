@@ -1,0 +1,8 @@
+          <div class="comment">
+            <p class="comment-head">
+              <%= comment.user.fname.capitalize %> says:
+            </p>  
+            <div class="comment-body">
+              <%= sanitize comment.comment_text %>
+            </div><!-- .comment-body -->
+          </div><!-- .comment -->

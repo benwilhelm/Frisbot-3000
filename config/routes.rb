@@ -1,4 +1,8 @@
 Frisbot::Application.routes.draw do
+  resources :comments
+
+  devise_for :users, :module => 'devise'
+
   resources :rsvps
 
   resources :players
@@ -54,8 +58,8 @@ Frisbot::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "games#show", :as => '/' 
-
+  root :to => "games#show" 
+  match "/users" => redirect("/")
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

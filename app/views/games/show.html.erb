@@ -5,32 +5,17 @@
         
         <div id="comments">
         
-          <div class="comment">
-            <p class="comment-head">Ben W. (organizer) says:</p>  
-            <div class="comment-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div><!-- .comment-body -->
-          </div><!-- .comment -->
-        
-          <div class="comment">
-            <p class="comment-head">Jen G. says:</p>  
-            <div class="comment-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div><!-- .comment-body -->
-          </div><!-- .comment -->
-        
-          <div class="comment">
-            <p class="comment-head">Yoni P. says:</p>  
-            <div class="comment-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div><!-- .comment-body -->
-          </div><!-- .comment -->
-        
+          <% if @game.comments.count > 0 %>        
+            <%= render @game.comments %>
+          <% end %>
+          
+          <% if user_signed_in? %>
           <form id="commentForm">
             <label>Leave a Comment:</label>
             <textarea rows="5" cols="40"></textarea>
             <br><input id='submitComment' name='submitComment' type="submit" value="Post Comment" />
           </form>
+          <% end %>
         
         </div><!-- #comments -->
       </div><!-- #nextGame -->
@@ -47,7 +32,7 @@
           <dt>Playing</dt>
           <% if @yesses.count > 0 %>
             <% @yesses.each do |rsvp| %>
-            <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
+            <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
             <% end %>
           <% else %>
           <dd>No replies yet.</dd>
@@ -58,7 +43,7 @@
           <dt>Not Playing</dt>
           <% if @nos.count > 0 %>
             <% @nos.each do |rsvp| %>
-            <dd><%= rsvp.player.fname.capitalize + ' ' + rsvp.player.lname.capitalize %></dd>
+            <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
             <% end %>
           <% else %>
           <dd>No replies yet.</dd>

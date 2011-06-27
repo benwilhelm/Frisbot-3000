@@ -1,12 +1,10 @@
 class GamesController < ApplicationController
 
-  before_filter :get_games
-
   # GET /games
   # GET /games.xml
   def index
     @game = @games.first 
-    @undecided = Player.all
+    @undecided = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,7 +37,7 @@ class GamesController < ApplicationController
       if @yesses.count < @game.min_players
         @game_status = "No Game"
         @summary_class = "game-off"
-        @polling_status = "See you next time."
+        @polling_status = "Polling closed. See you next time."
       else
         @game_status = "Game On"
         @summary_class = "game-on"
@@ -80,14 +78,6 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        Player.all.each do |player|
-          Rsvp.create(
-            :player_id => player.id ,
-            :game_id => @game.id ,
-            :auth_token => 'token'
-          )
-        end
-      
         format.html { redirect_to(@game, :notice => 'Game was successfully created.') }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
