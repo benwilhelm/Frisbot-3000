@@ -26,6 +26,16 @@
           <p id='numPlayers'><%= @yesses.count %> Players</p>
           <p id='gameStatus'><%= @game_status %></p>
           <p id='pollingStatus'><%= @polling_status %></p>
+          <% if user_signed_in? and @game.polling_cutoff.future? %>
+          <div id="yourResponse">
+            <p>Your response is: <%= @current_user_reply %></p>
+            <p>
+              Change your reply
+              <button id="replyYes">Playing</button>
+              <button id="replyNo">Not Playing</button>
+            </p>
+          </div>
+          <% end %>
         </div>
                 
         <dl id="yesses">
@@ -47,6 +57,15 @@
             <% end %>
           <% else %>
           <dd>No replies yet.</dd>
+          <% end %>
+        </dl>
+        
+        <dl id="undecided">
+          <dt>Undecided</dt>
+          <% if @undecided.count > 0 %>
+            <% @undecided.each do |rsvp| %>
+            <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
+            <% end %>
           <% end %>
         </dl>
         

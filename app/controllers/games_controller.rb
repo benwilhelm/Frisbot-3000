@@ -21,8 +21,9 @@ class GamesController < ApplicationController
       @game = @games.first 
     end
     
-    @yesses = @game.rsvps.where("resp = 1")
-    @nos = @game.rsvps.where("resp = 0")
+    @yesses = @game.rsvps.where("resp = 'Y'")
+    @nos = @game.rsvps.where("resp = 'N'")
+    @undecided = @game.rsvps.where("resp IS NULL")
     
     if @game.polling_cutoff.future? 
       if @yesses.count < @game.min_players
@@ -46,6 +47,18 @@ class GamesController < ApplicationController
         else
           @polling_status = "See you on the field!"
         end
+      end
+    end
+    
+    if (user_signed_in?) 
+      rsvp = @game.rsvps.where(:user_id => current_user.id).first
+      resp = rsvp.resp
+      if resp == 'Y' 
+        @current_user_reply = 'Playing'
+      elsif resp == 'N'
+        @current_user_reply = 'Not Playing'
+      else
+        @current_user_reply = 'Undecided'
       end
     end
 

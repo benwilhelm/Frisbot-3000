@@ -84,13 +84,21 @@ game4.save(false)
 Rsvp.delete_all 
 
 Game.find(:all).each do |game| 
+
+  User.find(:all).each do |user|
+    auth_token = RandSmartPass(12)
+    Rsvp.create(:game_id => game.id, :user_id => user.id, :auth_token => auth_token) 
+  end
+
   rand_num = rand(2)
   num_players = 5+rand_num
-  User.find(:all,:order=>'rand()',:limit=>num_players).each do |user|
-    Rsvp.create(:user_id => user.id, :game_id => game.id, :resp => true)
+  game.rsvps.find(:all,:order=>'rand()',:limit=>num_players).each do |rsvp|
+    rsvp.resp = 'Y'
+    rsvp.save() 
   end
-  User.find(:all,:order=>'rand()',:limit=>5,:offset=>num_players).each do |user|
-    Rsvp.create(:user_id => user.id, :game_id => game.id, :resp => false)
+  game.rsvps.find(:all,:order=>'rand()',:limit=>5,:offset=>num_players).each do |rsvp|
+    rsvp.resp = 'N'
+    rsvp.save()
   end
   
   comment_rand = rand(2)

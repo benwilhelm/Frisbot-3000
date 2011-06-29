@@ -142,6 +142,11 @@ body {
   font-size: 20px ;
 }
 
+#yourResponse {
+  font-size: medium ;
+  margin-top : 2em ;
+}
+
 #responses dl {
   margin : 2em 15px ;
 }
