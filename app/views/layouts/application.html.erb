@@ -24,7 +24,7 @@
           <% @games.each do |game| %>
             <li><%= link_to game.game_time.to_s(:game_month_day) + ' - ' + game.location, game %></li>
           <% end %>
-          <% if current_user.admin %>
+          <% if user_signed_in? and current_user.admin %>
             <li><%= link_to "New Game", new_game_path %></li>
           <% end %>
           </ul>
