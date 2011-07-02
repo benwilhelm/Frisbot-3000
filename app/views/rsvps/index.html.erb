@@ -13,8 +13,8 @@
 
 <% @rsvps.each do |rsvp| %>
   <tr>
-    <td><%= rsvp.player %></td>
-    <td><%= rsvp.game %></td>
+    <td><%= rsvp.user_id %></td>
+    <td><%= rsvp.game_id %></td>
     <td><%= rsvp.resp %></td>
     <td><%= rsvp.auth_token %></td>
     <td><%= link_to 'Show', rsvp %></td>

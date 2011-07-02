@@ -1,6 +1,6 @@
       <div id="nextGame">
 
-        <h1>Next Game</h1>
+        <h1><%= @game_title %></h1>
         <%= render @game %>
         
         <div id="comments">
@@ -26,13 +26,13 @@
           <p id='numPlayers'><%= @yesses.count %> Players</p>
           <p id='gameStatus'><%= @game_status %></p>
           <p id='pollingStatus'><%= @polling_status %></p>
-          <% if user_signed_in? and @game.polling_cutoff.future? %>
+          <% if user_signed_in? and @game.polling_cutoff.future? and @rsvp %>
           <div id="yourResponse">
             <p>Your response is: <%= @current_user_reply %></p>
             <p>
               Change your reply
-              <button id="replyYes">Playing</button>
-              <button id="replyNo">Not Playing</button>
+              <%= button_to "I'm Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp =>{:resp=>'Y'}}, {:method=>:put} %>
+              <%= button_to "I'm Not Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp => {:resp=>'N'}}, {:method=>:put} %>
             </p>
           </div>
           <% end %>

@@ -189,7 +189,14 @@ body {
   clear : both ;
 }
 
+form.button_to,
+form.button_to div {
+  display : inline ;
+}
 
+.notice {
+  background-color: #EFE ;
+}
 
 /* =Forms 
 ============================================== */

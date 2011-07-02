@@ -4,7 +4,6 @@ class GamesController < ApplicationController
   # GET /games.xml
   def index
     @game = @games.first 
-    @undecided = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,12 +16,14 @@ class GamesController < ApplicationController
   def show
     if params[:id]
       @game = Game.find(params[:id])
+      @game_title = "Upcoming Game"
     else
       @game = @games.first 
+      @game_title = "Next Game"
     end
     
-    @yesses = @game.rsvps.where("resp = 'Y'")
-    @nos = @game.rsvps.where("resp = 'N'")
+    @yesses = @game.rsvps.where("resp = 'Y'").order("updated_at DESC")
+    @nos = @game.rsvps.where("resp = 'N'").order("updated_at DESC")
     @undecided = @game.rsvps.where("resp IS NULL")
     
     if @game.polling_cutoff.future? 
@@ -51,14 +52,15 @@ class GamesController < ApplicationController
     end
     
     if (user_signed_in?) 
-      rsvp = @game.rsvps.where(:user_id => current_user.id).first
-      resp = rsvp.resp
-      if resp == 'Y' 
-        @current_user_reply = 'Playing'
-      elsif resp == 'N'
-        @current_user_reply = 'Not Playing'
-      else
-        @current_user_reply = 'Undecided'
+      @rsvp = @game.rsvps.where(:user_id => current_user.id).first
+      if @rsvp
+        if @rsvp.resp == 'Y' 
+          @current_user_reply = 'Playing'
+        elsif @rsvp.resp == 'N'
+          @current_user_reply = 'Not Playing'
+        else
+          @current_user_reply = 'Undecided'
+        end
       end
     end
 
@@ -72,7 +74,7 @@ class GamesController < ApplicationController
   # GET /games/new.xml
   def new
     @game = Game.new
-
+    @email_on_submit = "Automatically email players about new game"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @game }
@@ -82,6 +84,7 @@ class GamesController < ApplicationController
   # GET /games/1/edit
   def edit
     @game = Game.find(params[:id])
+    @email_on_submit = "Automatically notify players of changes"
   end
 
   # POST /games
@@ -91,6 +94,11 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        User.find(:all).each do |user|
+          auth_token = RandSmartPass(12)
+          Rsvp.create(:user_id => user.id, :game_id=>@game.id, :auth_token=>auth_token)
+        end
+      
         format.html { redirect_to(@game, :notice => 'Game was successfully created.') }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else

@@ -63,7 +63,7 @@ class RsvpsController < ApplicationController
 
     respond_to do |format|
       if @rsvp.update_attributes(params[:rsvp])
-        format.html { redirect_to(@rsvp, :notice => 'Rsvp was successfully updated.') }
+        format.html { redirect_to('/games/' + @rsvp.game_id.to_s, :notice => 'Rsvp was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

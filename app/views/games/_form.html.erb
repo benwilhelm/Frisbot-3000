@@ -30,6 +30,9 @@
   <div class="field">
     <%= f.label "Minimum Players" %><%= f.text_field :min_players, :size => 3 %>
   </div>
+  <div class="field">
+    <%= check_box_tag :email_on_submit, 'email', true %><%= label_tag :email_on_submit, @email_on_submit %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
