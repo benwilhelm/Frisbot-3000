@@ -1,5 +1,5 @@
         <h2><%= game.game_time.to_s(:game_time_long) %></h2>
-        <% if user_signed_in? %>
+        <% if user_signed_in? and current_user.admin %>
         <div>
           <%= button_to "Edit Game", edit_game_path(@game), :method => :get %>
           <%= button_to 'Delete Game', @game, :confirm => 'Are you sure you want to delete this game?', :method => :delete %>

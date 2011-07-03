@@ -28,12 +28,11 @@
           <p id='pollingStatus'><%= @polling_status %></p>
           <% if user_signed_in? and @game.polling_cutoff.future? and @rsvp %>
           <div id="yourResponse">
-            <p>Your response is: <%= @current_user_reply %></p>
-            <p>
-              Change your reply
+            <div>
               <%= button_to "I'm Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp =>{:resp=>'Y'}}, {:method=>:put} %>
               <%= button_to "I'm Not Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp => {:resp=>'N'}}, {:method=>:put} %>
-            </p>
+            </div>
+            <p>Your current response is: <%= @current_user_reply %></p>
           </div>
           <% end %>
         </div>

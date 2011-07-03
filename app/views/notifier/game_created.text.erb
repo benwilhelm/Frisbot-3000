@@ -1,0 +1,23 @@
+Hi <%= @player.fname %>,
+
+A new ultimate game was just scheduled.  
+
+<%= @game.game_time.to_s(:game_time_long) %>
+<%= @game.location %>
+
+<% if @first_comment %>
+  The organizer says:
+  
+  <%= @first_comment %>
+<% end %>
+
+Want to play?
+
+Yes!
+<link to yes>
+
+No!
+<link to no>
+
+Take me off this list!
+<link to unsubscribe>

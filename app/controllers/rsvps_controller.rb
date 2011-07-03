@@ -83,4 +83,30 @@ class RsvpsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def respond 
+    saved = false
+    resp = params[:resp]
+    auth_token = params[:auth_token]
+    rsvp = Rsvp.find(params[:id])
+
+    if auth_token = rsvp.auth_token
+      rsvp.resp = resp 
+      if rsvp.save 
+        saved = true
+      end
+    end
+    
+    if saved 
+      notc = "Your response was successfully saved"
+    else
+      notc = "There was a problem updating your response from the link.  Please try logging in to respond"
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to('/games/' + rsvp.game_id.to_s, :notice => notc) }
+    end
+    
+  end
+  
 end

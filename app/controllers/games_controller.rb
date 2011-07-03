@@ -95,8 +95,12 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         User.find(:all).each do |user|
-          auth_token = RandSmartPass(12)
-          Rsvp.create(:user_id => user.id, :game_id=>@game.id, :auth_token=>auth_token)
+          rsvp = Rsvp.new 
+          rsvp.user_id = user.id
+          rsvp.game_id= @game.id 
+          rsvp.save()
+          
+          Notifier.game_created(rsvp).deliver
         end
       
         format.html { redirect_to(@game, :notice => 'Game was successfully created.') }
