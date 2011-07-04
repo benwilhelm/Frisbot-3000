@@ -31,7 +31,8 @@
     <%= f.label "Minimum Players" %><%= f.text_field :min_players, :size => 3 %>
   </div>
   <div class="field">
-    <%= check_box_tag :email_on_submit, 'email', true %><%= label_tag :email_on_submit, @email_on_submit %>
+    <%= label_tag :first_comment, "Comment" %>
+    <%= text_area_tag :first_comment, '', :rows=>3 %>
   </div>
   <div class="actions">
     <%= f.submit %>

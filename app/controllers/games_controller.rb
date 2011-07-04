@@ -75,6 +75,7 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
     @email_on_submit = "Automatically email players about new game"
+    @show_comment_form = true
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @game }
@@ -91,9 +92,16 @@ class GamesController < ApplicationController
   # POST /games.xml
   def create
     @game = Game.new(params[:game])
-
+    
+    comment_text = params[:first_comment]
+    
     respond_to do |format|
       if @game.save
+      
+        if comment_text != ''
+          Comment.create(:user_id => current_user.id, :game_id => @game.id, :comment_text => comment_text)
+        end
+      
         User.find(:all).each do |user|
           rsvp = Rsvp.new 
           rsvp.user_id = user.id
@@ -116,9 +124,13 @@ class GamesController < ApplicationController
   # PUT /games/1.xml
   def update
     @game = Game.find(params[:id])
+    comment_text = params[:first_comment]
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
+        if comment_text != ''
+          Comment.create(:user_id => current_user.id, :game_id => @game.id, :comment_text => comment_text)
+        end
         format.html { redirect_to(@game, :notice => 'Game was successfully updated.') }
         format.xml  { head :ok }
       else
