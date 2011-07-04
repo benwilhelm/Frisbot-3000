@@ -1,13 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  game_time: 2011-06-15 20:10:07
+  id: 1
+  game_time: <%= 7.days.from_now %>
   location: MyText
-  polling_cutoff: 2011-06-15 20:10:07
-  min_players: 1
+  address: someplace, somewhere
+  polling_cutoff: <%= 6.days.from_now %>
+  min_players: 6
 
 two:
-  game_time: 2011-06-15 20:10:07
+  id: 2
+  game_time: <%= 14.days.from_now %>
   location: MyText
-  polling_cutoff: 2011-06-15 20:10:07
-  min_players: 1
+  address: someplace, somewhere
+  polling_cutoff: <%= 13.days.from_now %>
+  min_players: 6

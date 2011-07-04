@@ -3,6 +3,11 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   setup do
     @comment = comments(:one)
+    @update = {
+      :game_id => 1 ,
+      :user_id => 1 ,
+      :comment_text => 'Lorem Ipsum'
+    }
   end
 
   test "should get index" do
@@ -18,7 +23,7 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should create comment" do
     assert_difference('Comment.count') do
-      post :create, :comment => @comment.attributes
+      post :create, :comment => @update
     end
 
     assert_redirected_to comment_path(assigns(:comment))
@@ -35,7 +40,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should update comment" do
-    put :update, :id => @comment.to_param, :comment => @comment.attributes
+    put :update, :id => @comment.to_param, :comment => @update
     assert_redirected_to comment_path(assigns(:comment))
   end
 
@@ -46,4 +51,9 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_redirected_to comments_path
   end
+
+  private 
+  
 end
+
+
