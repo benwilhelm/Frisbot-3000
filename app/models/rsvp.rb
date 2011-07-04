@@ -10,7 +10,7 @@ class Rsvp < ActiveRecord::Base
   private 
   
   def generate_auth_token
-    my_auth_token = 'test'
+    my_auth_token = RandSmartPass(12)
     self.auth_token = my_auth_token unless self.auth_token
   end
   

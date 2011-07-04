@@ -14,10 +14,8 @@ A new ultimate game was just scheduled.
 Want to play?
 
 Yes!
-<link to yes>
+<<%= respond_url(:id=>@rsvp.id, :resp=>'Y', :auth_token=>@rsvp.auth_token) %>>
 
 No!
-<link to no>
+<<%= respond_url(:id=>@rsvp.id, :resp=>'N', :auth_token=>@rsvp.auth_token) %>>
 
-Take me off this list!
-<link to unsubscribe>

@@ -51,5 +51,7 @@ def RandSmartPass(size = 6)
     r << (f ? c[rand * c.size] : v[rand * v.size])
     f = !f
   end
-    
+  
+  r 
+  
 end

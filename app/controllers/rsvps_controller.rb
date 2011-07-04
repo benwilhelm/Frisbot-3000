@@ -84,13 +84,14 @@ class RsvpsController < ApplicationController
     end
   end
   
+  # Emailed RSVP link reply
   def respond 
     saved = false
     resp = params[:resp]
     auth_token = params[:auth_token]
     rsvp = Rsvp.find(params[:id])
 
-    if auth_token = rsvp.auth_token
+    if auth_token == rsvp.auth_token
       rsvp.resp = resp 
       if rsvp.save 
         saved = true
