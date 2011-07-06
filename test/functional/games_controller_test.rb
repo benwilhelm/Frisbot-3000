@@ -31,7 +31,7 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "should create rsvp for each player" do
-    assert_difference('Rsvp.count',Player.count) do
+    assert_difference('Rsvp.count',User.count) do
       post :create, :game => @update
     end
 
