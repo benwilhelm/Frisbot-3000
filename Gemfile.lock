@@ -95,6 +95,6 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   capistrano-ext
-  devise (= 1.4.2)
+  devise (~> 1.4.2)
   mysql2 (~> 0.2.6)
   rails (= 3.0.8)
