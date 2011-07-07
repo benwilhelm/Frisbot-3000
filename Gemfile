@@ -6,7 +6,7 @@ gem 'rails', '3.0.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', '~> 0.2.6'
-gem 'devise'
+gem 'devise', '~>1.4.2'
 
 #gem 'date_validator'
 #gem 'remarkable_date_validator'
