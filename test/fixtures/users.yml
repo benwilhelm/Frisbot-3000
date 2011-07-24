@@ -5,7 +5,6 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
-  id: 1
   fname: Ben
   lname: Wilhelm
   email: test@benwilhelm.com

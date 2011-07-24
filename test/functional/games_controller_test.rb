@@ -2,6 +2,7 @@ require 'test_helper'
 
 class GamesControllerTest < ActionController::TestCase
   setup do
+    @user = Users.gen
     @game = games(:one)
     @update = {
       :game_time => 7.days.from_now ,
@@ -23,6 +24,7 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "should create game" do
+    sign_in :user, @user
     assert_difference('Game.count') do
       post :create, :game => @update
     end
@@ -31,6 +33,7 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "should create rsvp for each player" do
+    sign_in :user, @user
     assert_difference('Rsvp.count',User.count) do
       post :create, :game => @update
     end
