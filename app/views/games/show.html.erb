@@ -10,11 +10,8 @@
           <% end %>
           
           <% if user_signed_in? %>
-          <form id="commentForm">
-            <label>Leave a Comment:</label>
-            <textarea rows="5" cols="40"></textarea>
-            <br><input id='submitComment' name='submitComment' type="submit" value="Post Comment" />
-          </form>
+            <% @comment = Comment.new(:user_id=>current_user.id, :game_id => @game.id) %>
+            <%= render :partial => 'comments/form' %>
           <% end %>
         
         </div><!-- #comments -->

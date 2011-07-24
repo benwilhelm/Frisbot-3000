@@ -41,11 +41,12 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
+    @game = Game.find(@comment.game_id)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+        format.html { redirect_to(@game, :notice => 'Comment was successfully created.') }
+        format.xml  { render :xml => @game, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }

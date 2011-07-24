@@ -82,6 +82,7 @@ game4.save(false)
            
 
 Rsvp.delete_all 
+Comment.delete_all
 
 Game.find(:all).each do |game| 
 
