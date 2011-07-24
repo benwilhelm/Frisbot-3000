@@ -5,10 +5,10 @@ A new ultimate game was just scheduled.
 <%= @game.game_time.to_s(:game_time_long) %>
 <%= @game.location %>
 
-<% if @first_comment %>
+<% if @comment %>
   The organizer says:
   
-  <%= @first_comment %>
+  <%= @comment.comment_text %>
 <% end %>
 
 Want to play?

@@ -10,7 +10,7 @@ class Notifier < ActionMailer::Base
     @rsvp = rsvp
     @game = Game.find(rsvp.game_id)
     @player = User.find(rsvp.user_id)
-    @comment = Comment.where(:game_id => @game.id, :limit => 1)
+    @comment = Comment.find(:first, ["game_id => ?", @game.id])
 
     subject = "New Ultimate Game: " + @game.game_time.to_s(:game_time_long)
 
@@ -24,7 +24,7 @@ class Notifier < ActionMailer::Base
   #
   def generic_email
     @greeting = "Hi"
-
-    mail :to => "to@example.org"
+    @text = "This is a test of the generic_email function of the Notifier Mailer."
+    mail :to => "benjamin.m.wilhelm@gmail.com"
   end
 end

@@ -108,9 +108,11 @@ class GamesController < ApplicationController
           rsvp.game_id= @game.id 
           rsvp.save()
           
-          Notifier.game_created(rsvp).deliver
+          if (user.email == 'benjamin.m.wilhelm@gmail.com')
+            Notifier.game_created(rsvp).deliver
+          end
         end
-      
+        
         format.html { redirect_to(@game, :notice => 'Game was successfully created.') }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
