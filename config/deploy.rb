@@ -1,10 +1,10 @@
 set :application, "frisbot3000"
+
 set :stages, %w(development staging production)
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 
 set :scm, :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 set :deploy_via, :remote_cache
 set :use_sudo, false
