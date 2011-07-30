@@ -35,7 +35,7 @@ production:
   database: frisbot_production
   pool: 5
   username: frisbot_prod
-  password: W9HQR5LyRWJuTCHu
+  password: rvZs3zhwuKhqrfXV
   host: localhost
 
 staging:
