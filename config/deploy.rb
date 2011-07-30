@@ -3,6 +3,7 @@ set :application, "frisbot3000"
 set :stages, %w(development staging production)
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
+require "bundler/capistrano"
 
 set :scm, :git
 
