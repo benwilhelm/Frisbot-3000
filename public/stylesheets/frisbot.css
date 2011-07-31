@@ -174,9 +174,15 @@ body {
 /* =Comments
 ========================================*/
 
-.comment p.comment-head {
+.comment {
+  margin-top : 1em ;
+}
+
+.comment .comment-head {
   font-style: italic ;
   margin-bottom: .3em ;
+  padding : 5px ;
+  border-top: 2px solid #ccc ; ;
 }
 
 .comment .comment-body {
@@ -184,12 +190,14 @@ body {
 }
 
 .comment form.button_to {
-  display: block ;
+  float : right ;
 }
 
-.comment input.delete {
+.comment input.delete,
+.comment input.edit {
   font-size: x-small ;
   padding : 1px ;
+  margin : 0 0 0 1em ;
 }
 
 

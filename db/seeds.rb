@@ -31,6 +31,16 @@ ben.save(false)
 
 
 if RAILS_ENV != 'production'
+
+  jen = User.new
+  jen.fname = "Jen" 
+  jen.lname = "Gadda" 
+  jen.email = "jgadda@gmail.com" 
+  jen.confirmed_at = '2011-06-26 22:16:49' 
+  jen.password = 'mun81kie' 
+  jen.password_confirmation = 'mun81kie' 
+  jen.admin = 0
+  jen.save(false)
  
   25.times {
   
