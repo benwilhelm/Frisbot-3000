@@ -16,6 +16,12 @@
     <%= f.datetime_select :game_time %>
   </div>
   <div class="field">
+    <%= f.label :polling_cutoff %><br />
+    <%= f.datetime_select :polling_cutoff %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :location %><br />
     <%= f.text_field :location %>
   </div>
@@ -27,17 +33,20 @@
     <%= f.label 'Link to map' %><br />
     <%= f.text_field :map_link %>
   </div>
-  <div class="field">
-    <%= f.label :polling_cutoff %><br />
-    <%= f.datetime_select :polling_cutoff %>
-  </div>
+
+
   <div class="field">
     <%= f.label "Minimum Players" %><%= f.text_field :min_players, :size => 3 %>
   </div>
+  
+
+  <% if @show_comment_form %>
   <div class="field">
     <%= label_tag :first_comment, "Comment" %>
     <%= text_area_tag :first_comment, '', :rows=>3 %>
   </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

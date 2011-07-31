@@ -94,7 +94,10 @@ class GamesController < ApplicationController
   # GET /games/1/edit
   def edit
     @game = Game.find(params[:id])
+    @game.address = @game.address.gsub '<br>', "\n"
     @email_on_submit = "Automatically notify players of changes"
+    
+    @show_comment_form = false
   end
 
   # POST /games
@@ -142,7 +145,7 @@ class GamesController < ApplicationController
     
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        if comment_text != ''
+        if comment_text and comment_text != ''
           comment_text = comment_text.gsub /\n/, '<br>'
           Comment.create(:user_id => current_user.id, :game_id => @game.id, :comment_text => comment_text)
         end
