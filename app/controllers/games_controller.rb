@@ -120,7 +120,7 @@ class GamesController < ApplicationController
           rsvp.save()
           
           if (user.email == 'benjamin.m.wilhelm@gmail.com')
-            Notifier.game_created(rsvp).deliver
+            # Notifier.game_created(rsvp).deliver
           end
         end
         
