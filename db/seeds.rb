@@ -21,6 +21,7 @@ ben.email = "benjamin.m.wilhelm@gmail.com"
 ben.confirmed_at = '2011-06-26 22:16:49' 
 ben.password = 'mun81kie' 
 ben.password_confirmation = 'mun81kie' 
+ben.admin = 1
 ben.save(false)
 
  

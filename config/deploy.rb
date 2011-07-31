@@ -22,6 +22,10 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+  
+  task :seed do 
+    run "cd #{current_path}; rake db:seed;"
+  end
 end
 
 after "deploy:update_code", :bundle_install
