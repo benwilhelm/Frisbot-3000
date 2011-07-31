@@ -169,6 +169,33 @@ body {
   #yesses dd {
     margin : .2em 0 ;
   }
+  
+  
+/* =Comments
+========================================*/
+
+.comment p.comment-head {
+  font-style: italic ;
+  margin-bottom: .3em ;
+}
+
+.comment .comment-body {
+  padding-left : 1em ;
+}
+
+.comment form.button_to {
+  display: block ;
+}
+
+.comment input.delete {
+  font-size: x-small ;
+  padding : 1px ;
+}
+
+
+form#new_comment {
+  margin-top : 2em ;
+}
 
 /* =Footer 
 ============================================== */
