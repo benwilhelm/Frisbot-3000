@@ -24,7 +24,7 @@ namespace :deploy do
   end
   
   task :seed do 
-    run "cd #{current_path}; rake db:seed; RAILS_ENV=staging"
+    run "cd #{current_path}; rake db:seed;"
   end
 end
 
