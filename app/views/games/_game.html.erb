@@ -9,5 +9,7 @@
         <p>
           <strong><%= game.location %></strong>
           <br><%= game.address.html_safe %>
-          <br><a id='fieldMap' href="#">view map</a>
+          <% if game.map_link != '' %>
+          <br><a id='fieldMap' href="<%= game.map_link %>" target='_blank'>view map</a>
+          <% end %>
         </p>
