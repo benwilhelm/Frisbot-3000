@@ -1,5 +1,6 @@
 set :repository, "git@github.com:benwilhelm/Frisbot-3000.git"
 set :branch, "release"
+set :rails_env, 'production'
 
 set :deploy_to, "/home/snoopy/public_html/#{application}"
 
