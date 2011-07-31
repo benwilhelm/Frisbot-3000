@@ -29,7 +29,13 @@ jQuery(document).ready(function(){
   }) ;
   
   
-
+  var timePickerOpts = {
+    dateFormat : "yy-mm-dd" ,
+    ampm : true ,
+    stepMinute : 15
+  }
+  $('#game_game_time').datetimepicker(timePickerOpts) ;
+  $('#game_polling_cutoff').datetimepicker(timePickerOpts) ;
 
 
   $("a[href='/players/new']").click(function(e){
