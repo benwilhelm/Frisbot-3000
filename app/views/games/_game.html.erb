@@ -8,6 +8,6 @@
         <div></div>
         <p>
           <strong><%= game.location %></strong>
-          <br><%= sanitize(game.address) %>
+          <br><%= game.address.html_safe %>
           <br><a id='fieldMap' href="#">view map</a>
         </p>

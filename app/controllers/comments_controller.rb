@@ -41,6 +41,7 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
+    @comment.comment_text = @comment.comment_text.gsub /\n/, '<br>'
     @game = Game.find(@comment.game_id)
 
     respond_to do |format|
@@ -58,6 +59,7 @@ class CommentsController < ApplicationController
   # PUT /comments/1.xml
   def update
     @comment = Comment.find(params[:id])
+    params[:comment][:comment_text] = params[:comment][:comment_text].gsub /\n/, '<br>'
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])

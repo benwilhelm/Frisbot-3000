@@ -101,6 +101,7 @@ class GamesController < ApplicationController
   # POST /games.xml
   def create
     @game = Game.new(params[:game])
+    @game.address = @game.address.gsub /\n/, '<br>'
     
     comment_text = params[:first_comment]
     
@@ -108,6 +109,7 @@ class GamesController < ApplicationController
       if @game.save
       
         if comment_text != ''
+          comment_text = comment_text.gsub /\n/ , '<br>' 
           Comment.create(:user_id => current_user.id, :game_id => @game.id, :comment_text => comment_text)
         end
       
@@ -136,10 +138,12 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     comment_text = params[:first_comment]
-
+    params[:game][:address] = params[:game][:address].gsub /\n/, '<br>'
+    
     respond_to do |format|
       if @game.update_attributes(params[:game])
         if comment_text != ''
+          comment_text = comment_text.gsub /\n/, '<br>'
           Comment.create(:user_id => current_user.id, :game_id => @game.id, :comment_text => comment_text)
         end
         format.html { redirect_to(@game, :notice => 'Game was successfully updated.') }
