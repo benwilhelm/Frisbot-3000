@@ -4,10 +4,14 @@ class GamesController < ApplicationController
   # GET /games.xml
   def index
     @game = @games.first 
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @games }
+    
+    if @game
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @games }
+      end
+    else 
+      render 'no_game'
     end
   end
 
@@ -20,6 +24,11 @@ class GamesController < ApplicationController
     else
       @game = @games.first 
       @game_title = "Next Game"
+    end
+    
+    if @game.nil?
+      render 'no_game'
+      return
     end
     
     @yesses = @game.rsvps.where("resp = 'Y'").order("updated_at DESC")
@@ -153,7 +162,5 @@ class GamesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  
-  
+    
 end
