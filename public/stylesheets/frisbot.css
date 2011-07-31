@@ -101,6 +101,11 @@ body {
   width : 440px ;
 }
 
+#gameInfo {
+  border-left: 2px solid #ccc ;
+  padding : .5em 1em ;
+}
+
 #commentForm label {
   display: block ;
 }
