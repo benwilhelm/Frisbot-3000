@@ -76,10 +76,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.xml
   def destroy
     @comment = Comment.find(params[:id])
+    @game = Game.find(@comment.game_id)
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(comments_url) }
+      format.html { redirect_to(@game) }
       format.xml  { head :ok }
     end
   end
