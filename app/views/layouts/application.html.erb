@@ -4,7 +4,7 @@
 		<title>Frisbot 3000</title>
 		<meta charset="utf-8">
     <%= stylesheet_link_tag "frisbot", "jquery-ui-custom", :media => "all" %>
-    <%= javascript_include_tag "jquery", "jquery-ui-custom", "jquery-ui-timepicker-addon", "jquery.simplemodal", "application" %>
+    <%= javascript_include_tag "jquery", "jquery-ui-full", "jquery-ui-timepicker-addon", "jquery.simplemodal", "rails", "jquery_ujs", "jrails", "application" %>
     <%= csrf_meta_tag %>
 	</head>
 	<body>
@@ -50,7 +50,8 @@
     </div><!-- #content -->
     
     <div id="footer">
-      <p>Frisbot 3000 loves you!</p>
+      <p class="large">Frisbot 3000 loves you!</p>
+      <p id="dbdgFooter">Frisbot was created by <a href='mailto:ben@doublebeamdesign.com'>Ben Wilhelm</a> at <a href='http://doublebeamdesign.com' target="_blank">Double Beam Design</a></p>
     </div>
 
 	</body>

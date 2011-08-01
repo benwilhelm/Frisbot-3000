@@ -220,6 +220,19 @@ form#new_comment {
   text-align: center ;
 }
 
+#dbdgFooter {
+  font-size: x-small ;
+  margin-top : 0 ;
+}
+
+#footer a,
+#footer a:visited {
+  color : #eee ;
+}
+
+  #footer a:hover {
+    text-decoration: none ;
+  }
 
 
 /* =Misc 
@@ -236,6 +249,10 @@ form.button_to div {
 
 .notice {
   background-color: #EFE ;
+}
+
+.large {
+  font-size: large ;
 }
 
 /* =Forms 

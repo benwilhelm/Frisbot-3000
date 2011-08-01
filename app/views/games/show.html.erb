@@ -1,15 +1,17 @@
       <div id="nextGame">
 
         <div id="gameInfo">
-          <h1><%= @game_title %></h1>
+          <h1>Upcoming Game</h1>
           <%= render @game %>
         </div>
         
         <div id="comments">
-        
-          <% if @game.comments.count > 0 %>        
-            <%= render @game.comments %>
-          <% end %>
+          
+          <div id="commentList">
+            <% if @game.comments.count > 0 %>        
+              <%= render @game.comments %>
+            <% end %>
+          </div><!-- #commentList -->
           
           <% if user_signed_in? %>
             <% @comment = Comment.new(:user_id=>current_user.id, :game_id => @game.id) %>

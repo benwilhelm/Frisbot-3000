@@ -1,0 +1,1 @@
+page.replace_html('commentList',render(@game.comments)) ;

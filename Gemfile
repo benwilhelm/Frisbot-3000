@@ -34,3 +34,7 @@ gem 'capistrano-ext'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+
+gem 'jquery-rails', '>= 1.0.3'
+gem 'jrails'

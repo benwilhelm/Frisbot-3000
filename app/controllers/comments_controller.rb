@@ -36,6 +36,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     @comment.comment_text = @comment.comment_text.gsub '<br>', "\n"
+    @game = Game.find(@comment.game_id)
   end
 
   # POST /comments
@@ -44,12 +45,15 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.comment_text = @comment.comment_text.gsub /\n/, '<br>'
     @game = Game.find(@comment.game_id)
+    @new_comment_id = @comment.id
 
     respond_to do |format|
       if @comment.save
+        format.js
         format.html { redirect_to(@game, :notice => 'Comment was successfully created.') }
         format.xml  { render :xml => @game, :status => :created, :location => @comment }
       else
+        format.js
         format.html { render :action => "new" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
@@ -82,6 +86,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
+      format.js { render :nothing => true }
       format.html { redirect_to(@game) }
       format.xml  { head :ok }
     end
