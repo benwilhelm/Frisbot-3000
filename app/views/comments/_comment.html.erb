@@ -1,4 +1,4 @@
-          <% new_class = (@comment and (@comment.id == comment.id)) ? 'latest-comment' : '' %>
+          <% new_class = @comment.try(:id) == comment.id ? 'latest-comment' : '' %>
           
           <div class="comment <%= new_class %>">
 

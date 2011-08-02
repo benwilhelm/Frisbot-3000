@@ -36,7 +36,8 @@ jQuery(document).ready(function(){
 
 $.fn.bindCommentActions = function() {
   $(this).find('.delete').closest("form").bind("ajax:success",function(data,status,xhr){
-    $(this).closest('.comment').fadeOut(500) ;
+    $(this).closest('.comment').fadeOut(300) ;
+    $('.comment').bindCommentActions() ;
   }) ;
   
 }
