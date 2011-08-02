@@ -36,5 +36,4 @@ gem 'capistrano-ext'
 # end
 
 
-gem 'jquery-rails', '>= 1.0.3'
 gem 'jrails'
