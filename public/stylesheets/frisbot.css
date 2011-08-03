@@ -110,7 +110,7 @@ body {
   display: block ;
 }
 
-#responses {
+#summary_column {
   float : right ;
   width : 440px ;
 }
@@ -258,6 +258,11 @@ form.button_to div {
 #modal {
   display: none ;
 }
+
+.loading-indicator {
+  display: none ;
+}
+
 
 /* =Forms 
 ============================================== */

@@ -6,16 +6,12 @@
 
 
 jQuery(document).ready(function(){
+  
+  $('#yourResponse input[type=submit]').click(function(){
+    $('#summary .loading-indicator').show() ;
+  }) ;
     
   $('#new_comment').bind("ajax:success",function(data,status,xhr){
-    $('#comment_comment_text').val('') ;
-    $('.latest-comment').effect('highlight',{color:"#DFA"},1500)
-                        .bindCommentActions() ;
-  }) ;
-  
-  $('.edit_comment').bind("ajax:success",function(){
-    alert("success!") ;
-    $.modal.close() ;
   }) ;
   
   $('.comment').bindCommentActions() ;
@@ -36,4 +32,17 @@ $.fn.bindCommentActions = function() {
     $('.comment').bindCommentActions() ;
   }) ;
   
+}
+
+$.fn.bindIndicator = function(elmnt) {
+  if (elmnt) {
+    var $ind = $(elmnt).find('.loading-indicator') ;
+  } else {
+    var $ind = $(this).find('.loading-indicator') ;
+  }
+  console.log($ind) ;
+
+  $(this).click(function(){
+    $ind.show() ;
+  })
 }

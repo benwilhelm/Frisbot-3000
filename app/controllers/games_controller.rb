@@ -31,35 +31,7 @@ class GamesController < ApplicationController
       return
     end
     
-    @yesses = @game.rsvps.where("resp = 'Y'").order("updated_at DESC")
-    @nos = @game.rsvps.where("resp = 'N'").order("updated_at DESC")
-    @undecided = @game.rsvps.where("resp IS NULL")
-    
-    if @game.polling_cutoff.future? 
-      if @yesses.count < @game.min_players
-        needed = @game.min_players - @yesses.count
-        @game_status = "Still waiting for " + needed.to_s + " more."
-      else
-        @game_status = "Game Tentatively On"
-      end
-      @summary_class = "game-maybe"
-      @polling_status = "Polling closes " + @game.polling_cutoff.to_s(:cutoff_time) 
-    else
-      if @yesses.count < @game.min_players
-        @game_status = "No Game"
-        @summary_class = "game-off"
-        @polling_status = "Polling closed. See you next time."
-      else
-        @game_status = "Game On"
-        @summary_class = "game-on"
-        if @game.location
-          @polling_status = "See you at " + @game.location + "!"
-        else
-          @polling_status = "See you on the field!"
-        end
-      end
-    end
-    
+        
     if (user_signed_in?) 
       @rsvp = @game.rsvps.where(:user_id => current_user.id).first
       if @rsvp

@@ -60,12 +60,15 @@ class RsvpsController < ApplicationController
   # PUT /rsvps/1.xml
   def update
     @rsvp = Rsvp.find(params[:id])
+    @game = Game.find(@rsvp.game_id)
 
     respond_to do |format|
       if @rsvp.update_attributes(params[:rsvp])
-        format.html { redirect_to('/games/' + @rsvp.game_id.to_s, :notice => 'Rsvp was successfully updated.') }
+        format.js
+        format.html { redirect_to(@game, :notice => 'Rsvp was successfully updated.') }
         format.xml  { head :ok }
       else
+        format.js
         format.html { render :action => "edit" }
         format.xml  { render :xml => @rsvp.errors, :status => :unprocessable_entity }
       end

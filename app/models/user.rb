@@ -12,6 +12,21 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :fname, :lname, :email, :password, :password_confirmation, :remember_me, :role
   
+  def get_rsvp_response(game_id)
+    rsvp = Rsvp.where(:game_id => game_id, :user_id=>self.id).first 
+    if rsvp.resp == 'Y'
+      ret = "Playing"
+    elsif rsvp.resp == 'N'
+      ret = "Not Playing"
+    else
+      ret = "Undecided"
+    end
+    
+    ret
+  end
+  
+  private
+  
   def create_rsvps
     future_games = Game.all(:conditions => ["game_time > ?", Time.now])
     future_games.each do |game|

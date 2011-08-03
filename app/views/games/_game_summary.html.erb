@@ -1,0 +1,13 @@
+          <p id='numPlayers'><%= @game.yesses.count %> Players</p>
+          <p id='gameStatus'><%= @game.game_status %></p>
+          <p id='pollingStatus'><%= @game.polling_status %></p>
+          <% if user_signed_in? and @game.polling_cutoff.future? and @rsvp %>
+          <div id="yourResponse">
+            <div>
+              <%= button_to "I'm Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp =>{:resp=>'Y'}}, {:method=>:put, :remote=>true} %>
+              <%= button_to "I'm Not Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp => {:resp=>'N'}}, {:method=>:put, :remote=>true} %>
+              <img src="/images/loading.gif" alt="" class="loading-indicator" />
+            </div>
+            <p>Your current response is: <%= current_user.get_rsvp_response(@game.id) %></p>
+          </div>
+          <% end %>
