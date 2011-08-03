@@ -255,6 +255,10 @@ form.button_to div {
   font-size: large ;
 }
 
+#modal {
+  display: none ;
+}
+
 /* =Forms 
 ============================================== */
 input, 

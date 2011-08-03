@@ -1,0 +1,8 @@
+$('#modal').html('<%= escape_javascript(render :partial => 'edit' ) %>').modal({
+  onShow: function() {
+    $("#modal .cancel").click(function(e){
+      e.preventDefault() ;
+      $.modal.close() ;
+    }) ;
+  }
+}) ;

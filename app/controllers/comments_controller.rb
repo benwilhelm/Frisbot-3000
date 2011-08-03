@@ -37,6 +37,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.comment_text = @comment.comment_text.gsub '<br>', "\n"
     @game = Game.find(@comment.game_id)
+    
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /comments
@@ -65,13 +69,15 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     params[:comment][:comment_text] = params[:comment][:comment_text].gsub /\n/, '<br>'
-    game = Game.find(@comment.game_id)
+    @game = Game.find(@comment.game_id)
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to(game, :notice => 'Comment was successfully updated.') }
+        format.js
+        format.html { redirect_to(@game, :notice => 'Comment was successfully updated.') }
         format.xml  { head :ok }
       else
+        format.js
         format.html { render :action => "edit" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end

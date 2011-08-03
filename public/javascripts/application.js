@@ -6,20 +6,16 @@
 
 
 jQuery(document).ready(function(){
-  
-//  $('input[data-confirm]').click(function(e){
-//    var msg = $(this).attr('data-confirm') ;
-//    var goAhead = confirm(msg) ;
-//    if (!goAhead) {
-//      e.preventDefault() ;
-//    }
-//  }) ;
-  
-  
+    
   $('#new_comment').bind("ajax:success",function(data,status,xhr){
     $('#comment_comment_text').val('') ;
     $('.latest-comment').effect('highlight',{color:"#DFA"},1500)
                         .bindCommentActions() ;
+  }) ;
+  
+  $('.edit_comment').bind("ajax:success",function(){
+    alert("success!") ;
+    $.modal.close() ;
   }) ;
   
   $('.comment').bindCommentActions() ;
