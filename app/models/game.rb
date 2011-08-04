@@ -15,27 +15,29 @@ class Game < ActiveRecord::Base
     @undecideds = self.rsvps.where("resp IS NULL") ;
   
     # set game status messages
-    if self.polling_cutoff.future? 
-      if @yesses.count < self.min_players
-        @needed = self.min_players - @yesses.count
-        @game_status = "Still waiting for " + @needed.to_s + " more."
-      else
-        @game_status = "Game Tentatively On"
-      end
-      @game_status_simple = "maybe"
-      @polling_status = "Polling closes " + self.polling_cutoff.to_s(:cutoff_time) 
-    else
-      if @yesses.count < self.min_players
-        @game_status = "No Game"
-        @game_status_simple = "off"
-        @polling_status = "Polling closed. See you next time."
-      else
-        @game_status = "Game On"
-        @game_status_simple = "on"
-        if self.location
-          @polling_status = "See you at " + self.location + "!"
+    if self.polling_cutoff
+      if self.polling_cutoff.future? 
+        if @yesses.count < self.min_players
+          @needed = self.min_players - @yesses.count
+          @game_status = "Still waiting for " + @needed.to_s + " more."
         else
-          @polling_status = "See you on the field!"
+          @game_status = "Game Tentatively On"
+        end
+        @game_status_simple = "maybe"
+        @polling_status = "Polling closes " + self.polling_cutoff.to_s(:cutoff_time) 
+      else
+        if @yesses.count < self.min_players
+          @game_status = "No Game"
+          @game_status_simple = "off"
+          @polling_status = "Polling closed. See you next time."
+        else
+          @game_status = "Game On"
+          @game_status_simple = "on"
+          if self.location
+            @polling_status = "See you at " + self.location + "!"
+          else
+            @polling_status = "See you on the field!"
+          end
         end
       end
     end
