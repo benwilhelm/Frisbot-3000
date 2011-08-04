@@ -31,6 +31,16 @@ ben.save(false)
 
 
 if RAILS_ENV != 'production'
+
+  jen = User.new
+  jen.fname = "Jen" 
+  jen.lname = "Gadda" 
+  jen.email = "jgadda@gmail.com" 
+  jen.confirmed_at = '2011-06-26 22:16:49' 
+  jen.password = 'mun81kie' 
+  jen.password_confirmation = 'mun81kie' 
+  jen.admin = 0
+  jen.save(false)
  
   25.times {
   
@@ -58,7 +68,7 @@ if RAILS_ENV != 'production'
   game1.game_time = 1.day.from_now 
   game1.polling_cutoff = 1.days.ago 
   game1.location = "Welles Park" 
-  game1.address = "2400 W. Montrose Ave.<br />Chicago, IL, 60625" 
+  game1.address = "2400 W. Montrose Ave.<br>Chicago, IL, 60625" 
   game1.min_players = 6
   game1.save(false) 
   
@@ -66,7 +76,7 @@ if RAILS_ENV != 'production'
   game2.game_time = 21.days.from_now 
   game2.polling_cutoff = 20.days.from_now 
   game2.location = "Welles Park" 
-  game2.address = "2400 W. Montrose Ave.<br />Chicago, IL, 60625" 
+  game2.address = "2400 W. Montrose Ave.<br>Chicago, IL, 60625" 
   game2.min_players = 6
   game2.save(false) 
   
@@ -74,7 +84,7 @@ if RAILS_ENV != 'production'
   game3.game_time = 1.day.ago 
   game3.polling_cutoff = 2.days.ago 
   game3.location = "Winnemac Park" 
-  game3.address = "5200 N. Damen Ave.<br />Chicago, IL, 60625" 
+  game3.address = "5200 N. Damen Ave.<br>Chicago, IL, 60625" 
   game3.min_players = 6
   game3.save(false) 
   
@@ -82,7 +92,7 @@ if RAILS_ENV != 'production'
   game4.game_time = 14.days.from_now 
   game4.polling_cutoff = 13.days.from_now 
   game4.location = "Winnemac Park" 
-  game4.address = "5200 N. Damen Ave.<br />Chicago, IL, 60625" 
+  game4.address = "5200 N. Damen Ave.<br>Chicago, IL, 60625" 
   game4.min_players = 6
   game4.save(false) 
              

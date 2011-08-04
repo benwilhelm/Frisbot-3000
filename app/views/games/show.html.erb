@@ -1,13 +1,17 @@
       <div id="nextGame">
 
-        <h1><%= @game_title %></h1>
-        <%= render @game %>
+        <div id="gameInfo">
+          <h1>Upcoming Game</h1>
+          <%= render @game %>
+        </div>
         
         <div id="comments">
-        
-          <% if @game.comments.count > 0 %>        
-            <%= render @game.comments %>
-          <% end %>
+          
+          <div id="commentList">
+            <% if @game.comments.count > 0 %>        
+              <%= render @game.comments %>
+            <% end %>
+          </div><!-- #commentList -->
           
           <% if user_signed_in? %>
             <% @comment = Comment.new(:user_id=>current_user.id, :game_id => @game.id) %>
@@ -17,53 +21,13 @@
         </div><!-- #comments -->
       </div><!-- #nextGame -->
       
-      <div id="responses">
-      
-        <div id="summary" class="<%= @summary_class %>">
-          <p id='numPlayers'><%= @yesses.count %> Players</p>
-          <p id='gameStatus'><%= @game_status %></p>
-          <p id='pollingStatus'><%= @polling_status %></p>
-          <% if user_signed_in? and @game.polling_cutoff.future? and @rsvp %>
-          <div id="yourResponse">
-            <div>
-              <%= button_to "I'm Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp =>{:resp=>'Y'}}, {:method=>:put} %>
-              <%= button_to "I'm Not Playing", {:controller => 'rsvps', :action => 'update', :id=>@rsvp.id, :rsvp => {:resp=>'N'}}, {:method=>:put} %>
-            </div>
-            <p>Your current response is: <%= @current_user_reply %></p>
-          </div>
-          <% end %>
-        </div>
+      <div id="summary_column">
+        <div id="summary" class="game-<%= @game.game_status_simple %>">
+          <%= render( :partial => 'game_summary') %>
+        </div><!-- #summary -->
                 
-        <dl id="yesses">
-          <dt>Playing</dt>
-          <% if @yesses.count > 0 %>
-            <% @yesses.each do |rsvp| %>
-            <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
-            <% end %>
-          <% else %>
-          <dd>No replies yet.</dd>
-          <% end %>
-        </dl>
-        
-        <dl id="nos">
-          <dt>Not Playing</dt>
-          <% if @nos.count > 0 %>
-            <% @nos.each do |rsvp| %>
-            <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
-            <% end %>
-          <% else %>
-          <dd>No replies yet.</dd>
-          <% end %>
-        </dl>
-        
-        <dl id="undecided">
-          <dt>Undecided</dt>
-          <% if @undecided.count > 0 %>
-            <% @undecided.each do |rsvp| %>
-            <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
-            <% end %>
-          <% end %>
-        </dl>
-        
-      </div><!-- #responses -->
+        <div id="responses">
+          <%= render( :partial => 'response_list') %>
+        </div><!-- #responses -->
+      </div><!-- #summary_column -->
       <div class="clear"></div>

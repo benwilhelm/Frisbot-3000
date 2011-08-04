@@ -4,10 +4,14 @@ class GamesController < ApplicationController
   # GET /games.xml
   def index
     @game = @games.first 
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @games }
+    
+    if @game
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @games }
+      end
+    else 
+      render 'no_game'
     end
   end
 
@@ -22,35 +26,12 @@ class GamesController < ApplicationController
       @game_title = "Next Game"
     end
     
-    @yesses = @game.rsvps.where("resp = 'Y'").order("updated_at DESC")
-    @nos = @game.rsvps.where("resp = 'N'").order("updated_at DESC")
-    @undecided = @game.rsvps.where("resp IS NULL")
-    
-    if @game.polling_cutoff.future? 
-      if @yesses.count < @game.min_players
-        needed = @game.min_players - @yesses.count
-        @game_status = "Still waiting for " + needed.to_s + " more."
-      else
-        @game_status = "Game Tentatively On"
-      end
-      @summary_class = "game-maybe"
-      @polling_status = "Polling closes " + @game.polling_cutoff.to_s(:cutoff_time) 
-    else
-      if @yesses.count < @game.min_players
-        @game_status = "No Game"
-        @summary_class = "game-off"
-        @polling_status = "Polling closed. See you next time."
-      else
-        @game_status = "Game On"
-        @summary_class = "game-on"
-        if @game.location
-          @polling_status = "See you at " + @game.location + "!"
-        else
-          @polling_status = "See you on the field!"
-        end
-      end
+    if @game.nil?
+      render 'no_game'
+      return
     end
     
+        
     if (user_signed_in?) 
       @rsvp = @game.rsvps.where(:user_id => current_user.id).first
       if @rsvp
@@ -85,13 +66,17 @@ class GamesController < ApplicationController
   # GET /games/1/edit
   def edit
     @game = Game.find(params[:id])
+    @game.address = @game.address.gsub '<br>', "\n"
     @email_on_submit = "Automatically notify players of changes"
+    
+    @show_comment_form = false
   end
 
   # POST /games
   # POST /games.xml
   def create
     @game = Game.new(params[:game])
+    @game.address = @game.address.gsub /\n/, '<br>'
     
     comment_text = params[:first_comment]
     
@@ -99,6 +84,7 @@ class GamesController < ApplicationController
       if @game.save
       
         if comment_text != ''
+          comment_text = comment_text.gsub /\n/ , '<br>' 
           Comment.create(:user_id => current_user.id, :game_id => @game.id, :comment_text => comment_text)
         end
       
@@ -109,7 +95,7 @@ class GamesController < ApplicationController
           rsvp.save()
           
           if (user.email == 'benjamin.m.wilhelm@gmail.com')
-            Notifier.game_created(rsvp).deliver
+            # Notifier.game_created(rsvp).deliver
           end
         end
         
@@ -127,10 +113,12 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     comment_text = params[:first_comment]
-
+    params[:game][:address] = params[:game][:address].gsub /\n/, '<br>'
+    
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        if comment_text != ''
+        if comment_text and comment_text != ''
+          comment_text = comment_text.gsub /\n/, '<br>'
           Comment.create(:user_id => current_user.id, :game_id => @game.id, :comment_text => comment_text)
         end
         format.html { redirect_to(@game, :notice => 'Game was successfully updated.') }
@@ -153,7 +141,5 @@ class GamesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  
-  
+    
 end

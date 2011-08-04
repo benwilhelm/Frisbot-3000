@@ -8,6 +8,8 @@
         <div></div>
         <p>
           <strong><%= game.location %></strong>
-          <br><%= sanitize(game.address) %>
-          <br><a id='fieldMap' href="#">view map</a>
+          <br><%= game.address.html_safe %>
+          <% if game.map_link != '' %>
+          <br><a id='fieldMap' href="<%= game.map_link %>" target='_blank'>view map</a>
+          <% end %>
         </p>

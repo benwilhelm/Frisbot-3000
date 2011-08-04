@@ -27,6 +27,7 @@ Frisbot::Application.configure do
     :user_name => 'games@frisbot3000.com',
     :password => 'fris{1981}kie'
   }  
+  config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

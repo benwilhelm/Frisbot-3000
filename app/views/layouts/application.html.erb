@@ -3,8 +3,8 @@
 	<head>
 		<title>Frisbot 3000</title>
 		<meta charset="utf-8">
-    <%= stylesheet_link_tag "frisbot", :media => "all" %>
-    <%= javascript_include_tag "jquery", "jquery.simplemodal", "application" %>
+    <%= stylesheet_link_tag "frisbot", "jquery-ui-custom", :media => "all" %>
+    <%= javascript_include_tag "jquery", "jquery-ui-full", "jquery-ui-timepicker-addon", "jquery.simplemodal", "rails", "jquery_ujs", "jrails", "application" %>
     <%= csrf_meta_tag %>
 	</head>
 	<body>
@@ -30,12 +30,13 @@
           </ul>
         </li>
         <% if user_signed_in? %>
+          <li><%= link_to "My Account", edit_user_registration_path %></li>
           <li><%= link_to "Log Out", destroy_user_session_path %></li>
         <% else %>
           <li><%= link_to "Log In", new_user_session_path %></li>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
         <% end %>
-        <li><a href="#">Help</a></li>
+        <!-- <li><a href="#">Help</a></li> -->
       </ul>
       <div class="clear"></div>
     </div>
@@ -49,8 +50,9 @@
     </div><!-- #content -->
     
     <div id="footer">
-      <p>Frisbot 3000 loves you!</p>
+      <p class="large">Frisbot 3000 loves you!</p>
+      <p id="dbdgFooter">Frisbot was created by <a href='mailto:ben@doublebeamdesign.com'>Ben Wilhelm</a> at <a href='http://doublebeamdesign.com' target="_blank">Double Beam Design</a></p>
     </div>
-
+    <div id="modal"></div>
 	</body>
 </html>

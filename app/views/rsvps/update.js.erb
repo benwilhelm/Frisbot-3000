@@ -1,0 +1,4 @@
+$('#summary').html("<%= escape_javascript(render(:partial => 'games/game_summary')) %>") ;
+$('#responses').html("<%= escape_javascript(render(:partial => 'games/response_list')) %>") ;
+$('#summary .loading-indicator').hide() ;
+$('#yourResponse input[type=submit]').bindIndicator('#yourResponse') ;

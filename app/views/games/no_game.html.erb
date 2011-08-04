@@ -1,0 +1,7 @@
+<h1>Welcome to the Frisbot</h1>
+
+<h2>No Games Scheduled</h2>
+
+<% if user_signed_in? and current_user.admin %>
+  <%= link_to 'Schedule a Game', new_game_path %>
+<% end %>

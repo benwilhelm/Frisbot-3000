@@ -4,43 +4,45 @@
 
 
 
-var smOpts = {
-  minWidth : 400 ,
-  minHeight : 350 ,
-  close : true
-}
-
-$.fn.submitWithAjax = function(callback) {
-  this.submit(function(){
-    var actn = $(this).attr("action") ;
-    $.post($(this).attr("action"), $(this).serialize(),callback) ;
-    return false ;
-  }) ;
-}
 
 jQuery(document).ready(function(){
   
-  $('input[data-confirm]').click(function(e){
-    var msg = $(this).attr('data-confirm') ;
-    var goAhead = confirm(msg) ;
-    if (!goAhead) {
-      e.preventDefault() ;
-    }
+  $('#yourResponse input[type=submit]').click(function(){
+    $('#summary .loading-indicator').show() ;
+  }) ;
+    
+  $('#new_comment').bind("ajax:success",function(data,status,xhr){
   }) ;
   
-  
+  $('.comment').bindCommentActions() ;
 
-
-
-  $("a[href='/players/new']").click(function(e){
-    e.preventDefault() ;
-    var href = $(this).attr('href') ;
-    $.get(href,function(data){
-      $(data).modal(smOpts) ;
-      $("form#simplemodal-data.new_player").submitWithAjax(function(){
-        alert('callback') ;
-      }) ;
-    })
-  })
+  var timePickerOpts = {
+    dateFormat : "yy-mm-dd" ,
+    ampm : true ,
+    stepMinute : 15
+  }
+  $('#game_game_time').datetimepicker(timePickerOpts) ;
+  $('#game_polling_cutoff').datetimepicker(timePickerOpts) ;
   
 }) ;
+
+$.fn.bindCommentActions = function() {
+  $(this).find('.delete').closest("form").bind("ajax:success",function(data,status,xhr){
+    $(this).closest('.comment').fadeOut(300) ;
+    $('.comment').bindCommentActions() ;
+  }) ;
+  
+}
+
+$.fn.bindIndicator = function(elmnt) {
+  if (elmnt) {
+    var $ind = $(elmnt).find('.loading-indicator') ;
+  } else {
+    var $ind = $(this).find('.loading-indicator') ;
+  }
+  console.log($ind) ;
+
+  $(this).click(function(){
+    $ind.show() ;
+  })
+}

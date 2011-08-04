@@ -101,11 +101,16 @@ body {
   width : 440px ;
 }
 
+#gameInfo {
+  border-left: 2px solid #ccc ;
+  padding : .5em 1em ;
+}
+
 #commentForm label {
   display: block ;
 }
 
-#responses {
+#summary_column {
   float : right ;
   width : 440px ;
 }
@@ -169,6 +174,41 @@ body {
   #yesses dd {
     margin : .2em 0 ;
   }
+  
+  
+/* =Comments
+========================================*/
+
+.comment {
+  margin-top : 1em ;
+}
+
+.comment .comment-head {
+  font-style: italic ;
+  margin-bottom: .3em ;
+  padding : 5px ;
+  border-top: 2px solid #ccc ; ;
+}
+
+.comment .comment-body {
+  padding-left : 1em ;
+}
+
+.comment form.button_to {
+  float : right ;
+}
+
+.comment input.delete,
+.comment input.edit {
+  font-size: x-small ;
+  padding : 1px ;
+  margin : 0 0 0 1em ;
+}
+
+
+form#new_comment {
+  margin-top : 2em ;
+}
 
 /* =Footer 
 ============================================== */
@@ -180,6 +220,19 @@ body {
   text-align: center ;
 }
 
+#dbdgFooter {
+  font-size: x-small ;
+  margin-top : 0 ;
+}
+
+#footer a,
+#footer a:visited {
+  color : #eee ;
+}
+
+  #footer a:hover {
+    text-decoration: none ;
+  }
 
 
 /* =Misc 
@@ -197,6 +250,19 @@ form.button_to div {
 .notice {
   background-color: #EFE ;
 }
+
+.large {
+  font-size: large ;
+}
+
+#modal {
+  display: none ;
+}
+
+.loading-indicator {
+  display: none ;
+}
+
 
 /* =Forms 
 ============================================== */

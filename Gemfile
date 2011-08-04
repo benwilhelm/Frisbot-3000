@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
+gem 'rails', '3.0.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -34,3 +34,6 @@ gem 'capistrano-ext'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+
+gem 'jrails'
