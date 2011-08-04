@@ -7,7 +7,7 @@
     <%= javascript_include_tag "jquery", "jquery-ui-full", "jquery-ui-timepicker-addon", "jquery.simplemodal", "rails", "jquery_ujs", "jrails", "application" %>
     <%= csrf_meta_tag %>
 	</head>
-	<body>
+	<body class="<%= @body_classes %>">
     <div id="header">
       <p id="siteTitle"><%= link_to 'Frisbot 3000', '/' %></p>
       <p id='welcome'>
