@@ -4,6 +4,13 @@ body {
   line-height: 1.3em ;
   margin : 0 ;
   padding : 0 ;
+  
+  background: #333 url(/images/background_image.jpg) top center fixed no-repeat ;
+  
+  -webkit-background-size: 'cover' ;
+  -moz-background-size: 'cover' ;
+  -o-background-size: 'cover' ;
+  background-size: 'cover' ;
 }
 
 #header {
@@ -99,11 +106,11 @@ body {
 #nextGame {
   float : left ;
   width : 440px ;
+  padding : 0 20px ;
 }
 
 #gameInfo {
-  border-left: 2px solid #ccc ;
-  padding : .5em 1em ;
+  padding : .5em 0 ;
 }
 
 #commentForm label {
@@ -112,7 +119,7 @@ body {
 
 #summary_column {
   float : right ;
-  width : 440px ;
+  width : 400px ;
 }
 
 #summary {
@@ -121,10 +128,15 @@ body {
   line-height: normal ;
   padding : .5em ;
   position: relative ;
+  
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
 }
 
   #summary.game-maybe {
-    background-color: #FF8 ;
+    background-color: #FE0 ;
   
   }
   
@@ -151,9 +163,24 @@ body {
   font-size: medium ;
   margin-top : 2em ;
 }
+  #current_response {
+    font-size: 2em ;
+    font-weight: bold ;
+    line-height: 1.5em ;
+  }
+  
+  #yourResponse .loading-indicator {
+    float : right ;
+  }
+
+#responses {
+  clear : both ;
+  padding : 1.5em 0 .1em ;
+  margin: 1em 0 ;
+}
 
 #responses dl {
-  margin : 2em 15px ;
+  margin : 0 15px 2em ;
 }
 
 #responses dt {
@@ -175,19 +202,30 @@ body {
     margin : .2em 0 ;
   }
   
+.trans-block {
+  background-color: #eee ;
+  background-color: rgba(0,0,0,.5) ;
+  color: #FFF ;
+
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
+}
+
   
 /* =Comments
 ========================================*/
 
 .comment {
-  margin-top : 1em ;
+  padding : .5em 0 ;
+  border-top: 1px solid #ccc ; ;
 }
 
 .comment .comment-head {
   font-style: italic ;
   margin-bottom: .3em ;
   padding : 5px ;
-  border-top: 2px solid #ccc ; ;
 }
 
 .comment .comment-body {
@@ -201,13 +239,17 @@ body {
 .comment input.delete,
 .comment input.edit {
   font-size: x-small ;
-  padding : 1px ;
+  padding : 1px .5em ;
   margin : 0 0 0 1em ;
 }
 
 
 form#new_comment {
   margin-top : 2em ;
+}
+
+form#new_comment #comment_comment_text {
+  background-color: #FFF ;
 }
 
 /* =Footer 
@@ -308,13 +350,26 @@ input[type='submit'] {
   width : auto ;
   position: relative ;
   margin : .5em auto ;
-  border : 1px solid #666 ;
+  border-top : 1px solid #FFF ;
   cursor: pointer ;
-  background-color: #ddd ;
+  color : #000 ;
+  background: #EEE url(/images/button_grad_large.png) left center repeat-x ;
+  padding : .3em .8em ;
+  font-size: inherit ;
+  
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
+  
+  -webkit-box-shadow: 0 1px 1px #000 ;
+  -moz-box-shadow: 0 1px 1px #000 ;
+  -o-box-shadow: 0 1px 1px #000 ;
+  box-shadow: 0 1px 1px #000 ;
 }
 
   input[type='submit']:hover {
-    background-color: #AAA ;
+    background-color: #48F ;
     color : #FFF ;
   }
 
@@ -328,6 +383,9 @@ label {
   line-height: normal ;
 }
 
+input[type='submit'].delete:hover {
+  background-color: #F00 ;
+}
 
 /* =Sign in
 ========================================*/
@@ -336,6 +394,15 @@ label {
 .devise_registrations_new #content ,
 .devise_registrations_edit #content {
   width : 450px ;
+  background-color: #EEE ;
+  background-color: rgba(255,255,255,0.4) ;
+  margin : 2.5em auto 2em ; ;
+  padding : 1em ;
+  
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
 }
 
 
