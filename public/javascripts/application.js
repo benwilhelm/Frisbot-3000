@@ -24,6 +24,8 @@ jQuery(document).ready(function(){
   $('#game_game_time').datetimepicker(timePickerOpts) ;
   $('#game_polling_cutoff').datetimepicker(timePickerOpts) ;
   
+  $(".feedback .notice").hide().delay(300).fadeIn(300).delay(1500).fadeOut(1000) ;
+  
 }) ;
 
 $.fn.bindCommentActions = function() {

@@ -91,7 +91,7 @@ body {
 
 #content {
   margin : 0 auto ;
-  padding : 2em 0 ;
+  padding : 0 ;
   position: relative ;
   width : 900px ;
 }
@@ -247,9 +247,31 @@ form.button_to div {
   display : inline ;
 }
 
-.notice {
-  background-color: #EFE ;
+.feedback {
+  text-align: center ;
+  position: relative ;
+  top : 0 ;
+  width : 100% ;
+  min-height: 2.5em ;
+  padding : 0 0 .25em ;
 }
+.feedback p {
+  position: relative ;
+  margin : 0 auto ;
+  text-align: center ;
+  font-size: 1.2em ;
+  padding: .5em ;
+}
+
+  .notice {
+    background-color: #5A5 ;
+    color: #FFF ;
+  }
+  
+  .alert {
+    background-color: #C00 ;
+    color: #FFF ;
+  }
 
 .large {
   font-size: large ;
