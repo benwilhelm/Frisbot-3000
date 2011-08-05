@@ -19,13 +19,13 @@ Frisbot::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => "587",
+    :user_name => 'frisbot3000',
+    :password => 'fris{1981}kie',
     :domain => "frisbot3000.com",
+    :address => "smtp.sendgrid.net",
+    :port => "587",
     :authentication => :plain,
-    :user_name => 'games@frisbot3000.com',
-    :password => 'fris{1981}kie'
+    :enable_starttls_auto => true,
   }  
   config.action_mailer.raise_delivery_errors = false
 

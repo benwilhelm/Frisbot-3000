@@ -25,7 +25,7 @@ class GamesController < ApplicationController
       @game = @games.first 
       @game_title = "Next Game"
     end
-    
+        
     if @game.nil?
       render 'no_game'
       return
@@ -94,8 +94,8 @@ class GamesController < ApplicationController
           rsvp.game_id= @game.id 
           rsvp.save()
           
-          if (user.email == 'benjamin.m.wilhelm@gmail.com')
-            # Notifier.game_created(rsvp).deliver
+          if (user.email == 'benjamin.m.wilhelm@gmail.com' or RAILS_ENV == "production")
+            Notifier.game_created(rsvp).deliver
           end
         end
         
