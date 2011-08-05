@@ -10,7 +10,8 @@ class Notifier < ActionMailer::Base
     @rsvp = rsvp
     @game = Game.find(rsvp.game_id)
     @player = User.find(rsvp.user_id)
-    @comment = Comment.find(:first, ["game_id => ?", @game.id])
+    @organizer = User.find(@game.organizer)
+    @comment = Comment.where(:game_id => @game.id).first
 
     subject = "New Ultimate Game: " + @game.game_time.to_s(:game_time_long)
 

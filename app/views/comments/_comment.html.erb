@@ -10,7 +10,9 @@
               <% if user_signed_in? and current_user.id == comment.user_id %>
                 <%= button_to "Edit Comment", edit_comment_path(comment), :method => :get, :class => 'edit', :remote=>true %>
               <% end %>
-              <%= comment.user.fname.capitalize %> says:
+              <%= comment.user.fname.capitalize %> 
+              <%= comment.user.id == @game.organizer ? ' (organizer) ' : '' %>
+              says:
               <div class="clear"></div>
             </div><!-- .comment-head -->
 

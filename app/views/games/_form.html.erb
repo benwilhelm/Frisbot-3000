@@ -39,6 +39,8 @@
     <%= f.label "Minimum Players" %><%= f.text_field :min_players, :size => 3 %>
   </div>
   
+  <% organizer = @game.organizer ? @game.organizer : current_user.id %>
+  <%= f.hidden_field :organizer, :value=>organizer %>
 
   <% if @show_comment_form %>
   <div class="field">

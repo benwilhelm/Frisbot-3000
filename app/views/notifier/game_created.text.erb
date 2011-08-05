@@ -6,9 +6,8 @@ A new ultimate game was just scheduled.
 <%= @game.location %>
 
 <% if @comment %>
-  The organizer says:
-  
-  <%= @comment.comment_text %>
+<%= @organizer.fname %>, the organizer, says: 
+<%= @comment.comment_text %>
 <% end %>
 
 Want to play?
