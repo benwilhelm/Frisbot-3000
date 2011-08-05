@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   
   def body_class
     ctrlr = params[:controller].gsub(/\//,"_")
-    @body_classes = ctrlr + '_' + params[:action]
+    @body_classes = ctrlr + ' '
+    @body_classes += ctrlr + '_' + params[:action] + ' '
   end
   
 end
