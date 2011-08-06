@@ -365,6 +365,13 @@ form.button_to div {
   display: none ;
 }
 
+/* weather widget */
+div.wXbody {
+  position: relative ;
+  margin : 2em auto 4em ;
+}
+
+
 
 /* =Forms 
 ============================================== */
