@@ -234,6 +234,12 @@ a, a:visited {
     margin : .2em 0 ;
   }
   
+  #undecided dd {
+    display : inline ;
+    padding : 0 1.5em 0 0 ;
+    white-space: nowrap ;
+  }
+  
 .trans-block {
   background-color: #eee ;
   background-color: rgba(0,0,0,.5) ;
