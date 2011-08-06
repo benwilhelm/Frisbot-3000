@@ -49,7 +49,7 @@ Frisbot::Application.configure do
 
   # Devise mailing options  
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => "www.frisbot3000.com" }
+  config.action_mailer.default_url_options = { :host => "staging.frisbot3000.com" }
   config.action_mailer.smtp_settings = {
     :user_name => 'frisbot3000',
     :password => 'fris{1981}kie',
