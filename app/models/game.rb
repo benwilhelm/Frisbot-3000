@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
       if self.polling_cutoff.future? 
         if @yesses.count < self.min_players
           @needed = self.min_players - @yesses.count
-          @game_status = "Still waiting for " + @needed.to_s + " more."
+          @game_status = "Waiting for " + @needed.to_s + " more."
         else
           @game_status = "Game Tentatively On"
         end
