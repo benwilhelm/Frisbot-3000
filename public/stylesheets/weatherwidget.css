@@ -1,6 +1,6 @@
 .stickerbody{margin:0px; padding:0px;}
 .wXbody, .wXheader, .wXalert, .wXgrill, .forecast {font-family:Arial, Helvetica; font-size:9px;}
-.wXbody {width:350px; height:275px; border:1px black solid; background-color : #FFF ; background-color: rgba(255,255,255,0.6) ; text-align:center; border-radius: 3px ; -webkit-border-radius: 3px ; -moz-border-radius: 3px ; -o-border-radius: 3px ; }
+.wXbody {width:auto; height:275px; margin: 3em 0 ; border:1px black solid; background-color : #FFF ; background-color: rgba(255,255,255,0.6) ; text-align:center; border-radius: 3px ; -webkit-border-radius: 3px ; -moz-border-radius: 3px ; -o-border-radius: 3px ; }
 .wXheader {height:35px; line-height:12px; text-align:center; }
 
 .wXalert { background:url(../../../Images/Stickers/v2/300X250/alert.gif) no-repeat; width:280px; color:#ffffff; text-align:center;}
@@ -49,4 +49,3 @@
 .wXbody .footer #logo { float:left; margin:11px 0px 0px 8px; }
 .wXbody .footer #location { float:right;  margin:17px 10px 0px 0px; } 
 
-.error {font-family:Arial, Helvetica; font-size:11px; color:#ff0000;}
