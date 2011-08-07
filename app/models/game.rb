@@ -2,6 +2,7 @@ class Game < ActiveRecord::Base
   default_scope :order => 'game_time'
   has_many :rsvps, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  belongs_to :organizer, :class_name => 'User'
 
   validates :game_time, :location, :polling_cutoff, :min_players, :presence => true
   validates :min_players, :numericality => { :greater_than_or_equal_to => 2, :only_integer => true }

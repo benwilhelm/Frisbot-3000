@@ -11,7 +11,7 @@
                 <%= button_to "Edit", edit_comment_path(comment), :method => :get, :class => 'edit', :remote=>true %>
               <% end %>
               <%= comment.user.fname.capitalize %> 
-              <%= comment.user.id == @game.organizer ? ' (organizer) ' : '' %>
+              <%= comment.user.id == @game.organizer_id ? ' (organizer) ' : '' %>
               says:
               <div class="clear"></div>
             </div><!-- .comment-head -->
