@@ -312,9 +312,12 @@ form#new_comment #comment_comment_text {
 #footer a,
 #footer a:visited {
   color : #eee ;
+  border-bottom: 1px dotted #888 ; ;
 }
 
   #footer a:hover {
+    color : #ACF ;
+    border-color: #ACF ;
     text-decoration: none ;
   }
 
