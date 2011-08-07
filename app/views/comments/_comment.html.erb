@@ -17,7 +17,7 @@
             </div><!-- .comment-head -->
 
             <div class="comment-body">
-              <%= comment.comment_text.html_safe %>
+              <%= comment.comment_text.html_safe unless comment.comment_text.nil?  %>
             </div><!-- .comment-body -->
 
           </div><!-- .comment -->
