@@ -21,6 +21,9 @@ Frisbot::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
   
   match 'rsvps/:id/respond/:resp/:auth_token' => 'rsvps#respond', :as => :respond
+  
+  match 'games/:id/email/new' => 'games#new_email_to_players', :as => :new_email_to_players
+  match 'games/:id/email/send' => 'games#send_email_to_players', :as => :send_email_to_players
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

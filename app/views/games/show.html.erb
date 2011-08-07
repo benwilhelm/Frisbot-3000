@@ -1,4 +1,4 @@
-      <div id="nextGame">
+      <div id="nextGame" class="trans-block">
 
         <div id="gameInfo">
           <h1>Upcoming Game</h1>
@@ -19,6 +19,30 @@
           <% end %>
         
         </div><!-- #comments -->
+      
+        						    
+						
+        <div class="wXbody">
+        
+        
+          <iframe id="WeatherBugSticker_300x250_v2" src="http://weather.weatherbug.com/desktop-weather/web-widgets/getSticker.html?ZipCode=60640&ZCode=z5545&Size=300x250&StationID=CHCSM&units=0&Version=2&lang_id=en-us" width="284" height="172" frameborder="0" scrolling="no" allowtransparency="yes"></iframe>
+          <div class="wXlinks">
+          <span class="link"><a href="http://weather.weatherbug.com/weather-forecast.html" target="_blank" onclick="Javascript:this.href='http://weather.weatherbug.com/IL/Chicago-weather/local-forecast/7-day-forecast.html?zcode=z5545&units=0'">Forecast</a></span>
+          <span class="link"><a href="http://weather.weatherbug.com/doppler-radar.html" target="_blank" onclick="Javascript:this.href='http://weather.weatherbug.com/IL/Chicago-weather/local-radar/doppler-radar.html?zcode=z5545&units=0'">Radar</a></span>
+          <span class="link"><a href="http://weather.weatherbug.com/weather-cams.html" target="_blank" onclick="Javascript:this.href='http://weather.weatherbug.com/IL/Chicago-weather/weather-cams/local-cams.html?zcode=z5545&units=0'">Cameras</a></span>
+          <span class="link"><a href="http://weather.weatherbug.com/weather-photos/photo-gallery.html" target="_blank" onclick="Javascript:this.href='http://weather.weatherbug.com/weather-photos/photo-gallery.html?zcode=z5545&units=0&zip=60640'">Photos</a></span>
+          </div>
+          <div class="footer">
+          <a href="http://weather.weatherbug.com/default.html" target="_blank" onclick="Javascript:this.href='http://weather.weatherbug.com/IL/Chicago-weather.html?zcode=z5545&units=0'"><img src="http://img.weather.weatherbug.com/images/stickers/v2/300x250/wxbug-logo.jpg" id="logo" border="0" alt="WeatherBug" /></a>
+          <a href="http://weather.weatherbug.com/default.html" target="_blank" onclick="Javascript:this.href='http://weather.weatherbug.com/IL/Chicago-weather.html?zcode=z5545&units=0'"><img src="http://img.weather.weatherbug.com/images/stickers/v2/English_ViewLocal_102x16.png" border="0" id="location" alt="WeatherBug" /></a>
+          </div>
+          
+          <div class="footertext">Your weather just got better.</div>
+        
+        </div> <!-- .wXbody -->
+          				   
+          							        				        
+        							
       </div><!-- #nextGame -->
       
       <div id="summary_column">
@@ -26,7 +50,7 @@
           <%= render( :partial => 'game_summary') %>
         </div><!-- #summary -->
                 
-        <div id="responses">
+        <div id="responses" class="trans-block">
           <%= render( :partial => 'response_list') %>
         </div><!-- #responses -->
       </div><!-- #summary_column -->

@@ -4,7 +4,22 @@ body {
   line-height: 1.3em ;
   margin : 0 ;
   padding : 0 ;
+  
+  background: #333 url(/images/background_image.jpg) top center fixed no-repeat ;
+  
+  -webkit-background-size: 'cover' ;
+  -moz-background-size: 'cover' ;
+  -o-background-size: 'cover' ;
+  background-size: 'cover' ;
 }
+
+a, a:visited {
+  color : #8BF ;
+  text-decoration: none ;
+}
+  a:hover {
+    text-decoration: underline ;
+  }
 
 #header {
   background-color: #333 ;
@@ -91,7 +106,7 @@ body {
 
 #content {
   margin : 0 auto ;
-  padding : 2em 0 ;
+  padding : 0 ;
   position: relative ;
   width : 900px ;
 }
@@ -99,20 +114,23 @@ body {
 #nextGame {
   float : left ;
   width : 440px ;
+  padding : 0 20px ;
 }
 
 #gameInfo {
-  border-left: 2px solid #ccc ;
-  padding : .5em 1em ;
+  padding : .5em 0 ;
 }
-
+  #gameInfo .email-button {
+    float : right ;
+  }
+  
 #commentForm label {
   display: block ;
 }
 
 #summary_column {
   float : right ;
-  width : 440px ;
+  width : 400px ;
 }
 
 #summary {
@@ -121,10 +139,16 @@ body {
   line-height: normal ;
   padding : .5em ;
   position: relative ;
+  text-align: center ;
+  
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
 }
 
   #summary.game-maybe {
-    background-color: #FF8 ;
+    background-color: #FE0 ;
   
   }
   
@@ -132,15 +156,39 @@ body {
     background-color: #800 ;
     color : #FFF ;  
   }
+    #summary.game-off #gameStatus {
+      border-color : #FFF ;
+    }
   
   #summary.game-on {
     background-color: #1A1 ;
     color : #FFF ;
-  
   }
+  
+    #summary.game-on #gameStatus {
+      border-color : #fff ;
+    }
   
 #summary p {
   margin : .5em 0 ;
+}
+
+#gameStatus {
+  font-weight: bold ;
+  border : 1px solid #000 ;
+  padding : 10px 5px ;
+  text-align: center ;
+  
+  
+  -webkit-box-shadow: 0 2px 2px #000 ;
+  -moz-box-shadow: 0 2px 2px #000 ;
+  -o-box-shadow: 0 2px 2px #000 ;
+  box-shadow: 0 2px 2px #000 ;
+
+  -webkit-border-radius: 3px ;
+  -moz-border-radius: 3px ;
+  -o-border-radius: 3px ;
+  border-radius: 3px ;
 }
 
 #pollingStatus {
@@ -151,9 +199,23 @@ body {
   font-size: medium ;
   margin-top : 2em ;
 }
+  #current_response {
+    font-size: 2em ;
+    line-height: 1.5em ;
+  }
+  
+  #yourResponse .loading-indicator {
+    float : right ;
+  }
+
+#responses {
+  clear : both ;
+  padding : 1.5em 0 .1em ;
+  margin: 1em 0 ;
+}
 
 #responses dl {
-  margin : 2em 15px ;
+  margin : 0 15px 2em ;
 }
 
 #responses dt {
@@ -175,19 +237,36 @@ body {
     margin : .2em 0 ;
   }
   
+  #undecided dd {
+    display : inline ;
+    padding : 0 1.5em 0 0 ;
+    white-space: nowrap ;
+  }
+  
+.trans-block {
+  background-color: #eee ;
+  background-color: rgba(0,0,0,.5) ;
+  color: #FFF ;
+
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
+}
+
   
 /* =Comments
 ========================================*/
 
 .comment {
-  margin-top : 1em ;
+  padding : .5em 0 ;
+  border-top: 1px solid #ccc ; ;
 }
 
 .comment .comment-head {
   font-style: italic ;
   margin-bottom: .3em ;
   padding : 5px ;
-  border-top: 2px solid #ccc ; ;
 }
 
 .comment .comment-body {
@@ -201,13 +280,18 @@ body {
 .comment input.delete,
 .comment input.edit {
   font-size: x-small ;
-  padding : 1px ;
+  padding : 1px .5em ;
   margin : 0 0 0 1em ;
+  min-width: 5em ;
 }
 
 
 form#new_comment {
   margin-top : 2em ;
+}
+
+form#new_comment #comment_comment_text {
+  background-color: #FFF ;
 }
 
 /* =Footer 
@@ -247,9 +331,31 @@ form.button_to div {
   display : inline ;
 }
 
-.notice {
-  background-color: #EFE ;
+.feedback {
+  text-align: center ;
+  position: relative ;
+  top : 0 ;
+  width : 100% ;
+  min-height: 2.5em ;
+  padding : 0 0 .25em ;
 }
+.feedback p {
+  position: relative ;
+  margin : 0 auto ;
+  text-align: center ;
+  font-size: 1.2em ;
+  padding: .5em ;
+}
+
+  .notice {
+    background-color: #5A5 ;
+    color: #FFF ;
+  }
+  
+  .alert {
+    background-color: #C00 ;
+    color: #FFF ;
+  }
 
 .large {
   font-size: large ;
@@ -263,6 +369,16 @@ form.button_to div {
   display: none ;
 }
 
+#no_game {
+  text-align: center ;
+  padding : 2em 1em 3em ;
+  margin-bottom: 8em ;
+}
+
+.disabled {
+  color : #999 ;
+}
+
 
 /* =Forms 
 ============================================== */
@@ -271,9 +387,9 @@ textarea {
 
   font-size: 1.3em ;
   line-height: normal ;
-  background-color: #eee ;
+  background-color: #ccc ;
+  border : 1px solid #888 ;
   width : 95% ;
-  border : none ;
   padding: 3px ;
   
   -webkit-border-radius: 4px ;
@@ -281,19 +397,49 @@ textarea {
   -o-border-radius: 4px ;
   border-radius: 4px ;
 }
+  input.error,
+  textarea.error {
+    border : 2px solid red ;
+  }
 
 input[type='submit'] {
   width : auto ;
   position: relative ;
   margin : .5em auto ;
-  border : 1px solid #666 ;
+  border : none ;
+  border-top : 1px solid #FFF ;
   cursor: pointer ;
-  background-color: #ddd ;
+  color : #000 ;
+  background: #EEE url(/images/button_grad_large.png) left center repeat-x ;
+  background-color: rgba(255,255,255,0.5) ;
+  padding : .3em .8em ;
+  font-size: inherit ;
+  
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
+  
+  -webkit-box-shadow: 0 1px 1px #000 ;
+  -moz-box-shadow: 0 1px 1px #000 ;
+  -o-box-shadow: 0 1px 1px #000 ;
+  box-shadow: 0 1px 1px #000 ;
+
+  -webkit-text-shadow: 0 1px 1px #FFF ;
+  -moz-text-shadow: 0 1px 1px #FFF ;
+  -o-text-shadow: 0 1px 1px #FFF ;
+  text-shadow: 0 1px 1px #FFF ;
 }
 
   input[type='submit']:hover {
-    background-color: #AAA ;
+    background-color: #48F ;
     color : #FFF ;
+    
+  -webkit-text-shadow: none ;
+  -moz-text-shadow: none ;
+  -o-text-shadow: none ;
+  text-shadow: none ;
+    
   }
 
 input[type='checkbox'] ,
@@ -302,18 +448,32 @@ input[type='radio'] {
 }
 
 label {
-  margin-top : .5em ;
+  padding-top : .5em ;
   line-height: normal ;
 }
 
+input[type='submit'].delete:hover {
+  background-color: #F00 ;
+}
 
-/* =Sign in
+/* =Transparent blocks
 ========================================*/
 
-.devise_sessions_new #content ,
-.devise_registrations_new #content ,
-.devise_registrations_edit #content {
+.devise_sessions #content ,
+.devise_registrations #content ,
+.devise_confirmations #content,
+.small-content {
   width : 450px ;
+  background-color: #000 ;
+  background-color: rgba(0,0,0,0.4) ;
+  color: #FFF ;
+  margin : 2.5em auto 2em ; ;
+  padding : 1em ;
+  
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -o-border-radius: 10px ;
+  border-radius: 10px ;
 }
 
 
@@ -321,7 +481,7 @@ label {
 ============================================== */
 
 #simplemodal-overlay {
-  background-color: #002 ;
+  background-color: #CCC ;
 }
 
 #simplemodal-container {
@@ -329,11 +489,18 @@ label {
 
   padding : 15px ;
   position: relative ;
+  
+  border: 1px solid #444 ;
 
   -webkit-border-radius: 10px ;
   -moz-border-radius: 10px ;
   -o-border-radius: 10px ;
   border-radius: 10px ;
+  
+  -webkit-box-shadow: 0 15px 25px #333 ;
+  -moz-box-shadow: 0 15px 25px #333 ;
+  -o-box-shadow: 0 15px 25px #333 ;
+  box-shadow: 0 15px 25px #333 ;
 }
 
 a.simplemodal-close {
@@ -345,4 +512,23 @@ a.simplemodal-close {
   top : 0 ;
   right : 0 ;
   cursor: pointer ;
+}
+
+#email_players_submit {
+  float : right ;
+}
+
+#email_players .loading-indicator {
+  float : right ;
+  margin-right : 10px ;
+}
+
+/* =Date Picker
+========================================*/
+
+.ui-datepicker-calendar .ui-state-active {
+  background-color: #EB8F00 ;
+  border-color: #EB8F00 ;
+  background-image: none ;
+  color : #FFF ;
 }

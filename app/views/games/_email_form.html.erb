@@ -1,0 +1,37 @@
+<h1>Email Players</h1>
+
+<form id='email_players' method="post" action="<%= send_email_to_players_path %>" data-remote='true'>
+
+  <div class="recipients">
+    <%= check_box_tag 'players_all', 1, {:checked=>'checked'} %>
+    <%= label_tag 'players_all', 'All Players' %>
+    <br />
+    <%= check_box_tag 'players_yes', 1, false, :class=>'subset' %>
+    <%= label_tag 'players_yes', 'Playing', :class=>'subset' %>
+    
+    <%= check_box_tag 'players_no', 1, false, :class=>'subset' %>
+    <%= label_tag 'players_no', 'Not Playing', :class=>'subset' %>
+    
+    <%= check_box_tag 'players_undecided', 1, false, :class=>'subset' %>
+    <%= label_tag 'players_undecided', 'Undecided', :class=>'subset' %>
+  </div>
+  
+  <p>
+    <%= label_tag 'email_subject', "Subject" %><br />
+    <%= text_field_tag 'email_subject' %>
+  </p>
+  <p>
+    <%= label_tag 'email_text', "Message" %><br />
+    <%= text_area_tag 'email_text', '',{:rows=>4, :cols=>40} %>
+  </p>
+  
+  <p>
+    <%= check_box_tag 'post_as_comment', :value=>'1', :checked => false %>
+    <%= label_tag 'post_as_comment', 'Post Email as Comment' %>
+    
+    <%= hidden_field_tag 'game_id', @game.id %>
+    <%= hidden_field_tag 'sender_id', current_user.id %>
+    <%= submit_tag 'Send Email', :id=>'email_players_submit' %>
+    <img src="/images/loading.gif" alt="" class="loading-indicator" />
+  </p>
+</form>

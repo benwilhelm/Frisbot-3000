@@ -3,7 +3,7 @@
 	<head>
 		<title>Frisbot 3000</title>
 		<meta charset="utf-8">
-    <%= stylesheet_link_tag "frisbot", "jquery-ui-custom", :media => "all" %>
+    <%= stylesheet_link_tag "jquery-ui-custom", "weatherwidget", "frisbot", :media => "all" %>
     <%= javascript_include_tag "jquery", "jquery-ui-full", "jquery-ui-timepicker-addon", "jquery.simplemodal", "jquery_ujs", "jrails", "application" %>
     <%= csrf_meta_tag %>
 	</head>
@@ -39,11 +39,18 @@
         <!-- <li><a href="#">Help</a></li> -->
       </ul>
       <div class="clear"></div>
-    </div>
-    
+    </div><!-- #header -->
+
     <div id="content">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class="feedback">
+        <% if notice %>
+        <p class="notice"><%= notice %></p>
+        <% end %>
+        
+        <% if alert %>
+        <p class="alert"><%= alert %></p>
+        <% end %>
+      </div>
 
       <%= yield %>
 

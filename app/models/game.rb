@@ -2,6 +2,7 @@ class Game < ActiveRecord::Base
   default_scope :order => 'game_time'
   has_many :rsvps, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  belongs_to :organizer, :class_name => 'User'
 
   validates :game_time, :location, :polling_cutoff, :min_players, :presence => true
   validates :min_players, :numericality => { :greater_than_or_equal_to => 2, :only_integer => true }
@@ -19,7 +20,7 @@ class Game < ActiveRecord::Base
       if self.polling_cutoff.future? 
         if @yesses.count < self.min_players
           @needed = self.min_players - @yesses.count
-          @game_status = "Still waiting for " + @needed.to_s + " more."
+          @game_status = "Waiting for " + @needed.to_s + " more."
         else
           @game_status = "Game Tentatively On"
         end

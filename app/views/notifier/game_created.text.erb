@@ -6,9 +6,13 @@ A new ultimate game was just scheduled.
 <%= @game.location %>
 
 <% if @comment %>
-  The organizer says:
-  
-  <%= @comment.comment_text %>
+<%= @organizer.fname %>, the organizer, says: 
+<%= @comment.comment_text %>
+<% end %>
+
+<% if @game.map_link and @game.map_link != '' %>
+Click here for a map
+<<%= @game.map_link %>>
 <% end %>
 
 Want to play?
@@ -19,3 +23,5 @@ Yes!
 No!
 <<%= respond_url(:id=>@rsvp.id, :resp=>'N', :auth_token=>@rsvp.auth_token) %>>
 
+Never! (cancel account)
+<<%= edit_user_registration_url() %>>
