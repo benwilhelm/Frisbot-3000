@@ -1,4 +1,4 @@
-          <p id='numPlayers'><%= @game.yesses.count %> Players</p>
+          <p id='numPlayers'><%= pluralize @game.yesses.count, "Player" %></p>
           <p id='gameStatus'><%= @game.game_status %></p>
           <p id='pollingStatus'><%= @game.polling_status %></p>
           <% if user_signed_in? and @game.polling_cutoff.future? and @rsvp %>
