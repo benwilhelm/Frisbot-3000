@@ -464,7 +464,8 @@ input[type='submit'].delete:hover {
 
 .devise_sessions #content ,
 .devise_registrations #content ,
-.devise_confirmations #content,
+.devise_confirmations #content ,
+.devise_passwords #content ,
 .small-content {
   width : 450px ;
   background-color: #000 ;
