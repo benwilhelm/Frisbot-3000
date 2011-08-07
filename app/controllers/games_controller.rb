@@ -77,6 +77,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(params[:game])
     @game.address = @game.address.gsub /\n/, '<br>'
+    @show_comment_form = true ;
     
     comment_text = params[:first_comment]
     
@@ -139,6 +140,67 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(games_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  
+  # GET /games/1/email_players
+  def new_email_to_players
+    @game = Game.find(params[:id])
+    
+    respond_to do |format|
+      format.js
+    end 
+  end
+  
+  # POST /games/1/email_players
+  def send_email_to_players
+    
+    @send_list = []
+    if params[:players_all]
+      @send_list = User.find(:all)
+    else 
+      if params[:players_yes]
+        recips = User.where("users.id IN (SELECT user_id FROM rsvps WHERE resp='Y' AND game_id=?)", params[:game_id]).all
+        recips.each do |recip|
+          @send_list.push(recip)
+        end
+      end
+      
+      if params[:players_no]
+        recips = User.where("users.id IN (SELECT user_id FROM rsvps WHERE resp='N' AND game_id=?)", params[:game_id]).all
+        recips.each do |recip|
+          @send_list.push(recip)
+        end
+      end
+      
+      if params[:players_undecided]
+        recips = User.where("users.id IN (SELECT user_id FROM rsvps WHERE resp IS NULL AND game_id=?)", params[:game_id]).all
+        recips.each do |recip|
+          @send_list.push(recip)
+        end
+      end
+    end
+    
+    @send_list.each do |recip|
+      if (recip.email == 'benjamin.m.wilhelm@gmail.com' or RAILS_ENV == 'production')
+        Notifier.email_players(recip.email, params).deliver
+      end
+    end
+    
+    if params[:post_as_comment] 
+      @game = Game.find(params[:game_id])
+      cmnt = Comment.new 
+      cmnt.user_id = params[:sender_id]
+      cmnt.game_id = params[:game_id]
+      cmnt.comment_text = params[:email_text]
+      cmnt.save
+      
+      @post_as_comment = true
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
     

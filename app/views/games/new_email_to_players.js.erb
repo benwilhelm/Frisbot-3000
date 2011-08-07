@@ -1,0 +1,40 @@
+function setEmailRecips() {
+  if ($('#players_all').is(":checked")) {
+    $("input.subset").attr("checked","checked") ;
+    $(".subset").attr('disabled','disabled') 
+                .addClass('disabled') ;
+  } else {
+    $(".subset").removeAttr('disabled')
+                .removeClass('disabled') ;
+  }
+}
+
+$('#modal').html('<%= escape_javascript(render :partial => 'email_form') %>').modal({
+  onShow: function(){
+    
+    $('#email_players_submit').click(function(e){
+      
+      $req = $("#email_subject, #email_text") ;
+      var errors = false ;
+      
+      $req.removeClass('error') ;
+      $req.each(function(idx,obj) {
+        if ($(this).val() == '') {
+          errors = true ;
+          $(this).addClass('error') ;
+        }
+      }) ;
+      
+      if (errors) {
+        e.preventDefault() ;
+      } else {
+        $('#email_players .loading-indicator').show() ;
+      }
+    }) ;
+    
+    setEmailRecips() ;
+    $('.recipients input').click(function(){
+      setEmailRecips() ;
+    }) ;
+  }
+})

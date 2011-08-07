@@ -1,0 +1,6 @@
+$.modal.close() ;
+flashNotice('Email Sent') ;
+
+<% if @post_as_comment %>
+$('#commentList').html("<%= escape_javascript(render(@game.comments)) %>").bindCommentActions() ;
+<% end %>

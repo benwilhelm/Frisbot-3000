@@ -120,7 +120,10 @@ a, a:visited {
 #gameInfo {
   padding : .5em 0 ;
 }
-
+  #gameInfo .email-button {
+    float : right ;
+  }
+  
 #commentForm label {
   display: block ;
 }
@@ -279,6 +282,7 @@ a, a:visited {
   font-size: x-small ;
   padding : 1px .5em ;
   margin : 0 0 0 1em ;
+  min-width: 5em ;
 }
 
 
@@ -365,8 +369,15 @@ form.button_to div {
   display: none ;
 }
 
+#no_game {
+  text-align: center ;
+  padding : 2em 1em 3em ;
+  margin-bottom: 8em ;
 }
 
+.disabled {
+  color : #999 ;
+}
 
 
 /* =Forms 
@@ -376,9 +387,9 @@ textarea {
 
   font-size: 1.3em ;
   line-height: normal ;
-  background-color: #eee ;
+  background-color: #ccc ;
+  border : 1px solid #888 ;
   width : 95% ;
-  border : none ;
   padding: 3px ;
   
   -webkit-border-radius: 4px ;
@@ -386,15 +397,21 @@ textarea {
   -o-border-radius: 4px ;
   border-radius: 4px ;
 }
+  input.error,
+  textarea.error {
+    border : 2px solid red ;
+  }
 
 input[type='submit'] {
   width : auto ;
   position: relative ;
   margin : .5em auto ;
+  border : none ;
   border-top : 1px solid #FFF ;
   cursor: pointer ;
   color : #000 ;
   background: #EEE url(/images/button_grad_large.png) left center repeat-x ;
+  background-color: rgba(255,255,255,0.5) ;
   padding : .3em .8em ;
   font-size: inherit ;
   
@@ -407,11 +424,22 @@ input[type='submit'] {
   -moz-box-shadow: 0 1px 1px #000 ;
   -o-box-shadow: 0 1px 1px #000 ;
   box-shadow: 0 1px 1px #000 ;
+
+  -webkit-text-shadow: 0 1px 1px #FFF ;
+  -moz-text-shadow: 0 1px 1px #FFF ;
+  -o-text-shadow: 0 1px 1px #FFF ;
+  text-shadow: 0 1px 1px #FFF ;
 }
 
   input[type='submit']:hover {
     background-color: #48F ;
     color : #FFF ;
+    
+  -webkit-text-shadow: none ;
+  -moz-text-shadow: none ;
+  -o-text-shadow: none ;
+  text-shadow: none ;
+    
   }
 
 input[type='checkbox'] ,
@@ -420,7 +448,7 @@ input[type='radio'] {
 }
 
 label {
-  margin-top : .5em ;
+  padding-top : .5em ;
   line-height: normal ;
 }
 
@@ -428,15 +456,17 @@ input[type='submit'].delete:hover {
   background-color: #F00 ;
 }
 
-/* =Sign in
+/* =Transparent blocks
 ========================================*/
 
-.devise_sessions_new #content ,
-.devise_registrations_new #content ,
-.devise_registrations_edit #content {
+.devise_sessions #content ,
+.devise_registrations #content ,
+.devise_confirmations #content,
+.small-content {
   width : 450px ;
-  background-color: #EEE ;
-  background-color: rgba(255,255,255,0.4) ;
+  background-color: #000 ;
+  background-color: rgba(0,0,0,0.4) ;
+  color: #FFF ;
   margin : 2.5em auto 2em ; ;
   padding : 1em ;
   
@@ -451,7 +481,7 @@ input[type='submit'].delete:hover {
 ============================================== */
 
 #simplemodal-overlay {
-  background-color: #002 ;
+  background-color: #CCC ;
 }
 
 #simplemodal-container {
@@ -459,11 +489,18 @@ input[type='submit'].delete:hover {
 
   padding : 15px ;
   position: relative ;
+  
+  border: 1px solid #444 ;
 
   -webkit-border-radius: 10px ;
   -moz-border-radius: 10px ;
   -o-border-radius: 10px ;
   border-radius: 10px ;
+  
+  -webkit-box-shadow: 0 15px 25px #333 ;
+  -moz-box-shadow: 0 15px 25px #333 ;
+  -o-box-shadow: 0 15px 25px #333 ;
+  box-shadow: 0 15px 25px #333 ;
 }
 
 a.simplemodal-close {
@@ -475,4 +512,23 @@ a.simplemodal-close {
   top : 0 ;
   right : 0 ;
   cursor: pointer ;
+}
+
+#email_players_submit {
+  float : right ;
+}
+
+#email_players .loading-indicator {
+  float : right ;
+  margin-right : 10px ;
+}
+
+/* =Date Picker
+========================================*/
+
+.ui-datepicker-calendar .ui-state-active {
+  background-color: #EB8F00 ;
+  border-color: #EB8F00 ;
+  background-image: none ;
+  color : #FFF ;
 }

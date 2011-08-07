@@ -3,6 +3,7 @@
         <div>
           <%= button_to "Edit Game", edit_game_path(@game), :method => :get, :class=>'edit' %>
           <%= button_to 'Delete Game', @game, :confirm => 'Are you sure you want to delete this game?', :method => :delete, :class=>'delete' %>
+          <%= button_to "Email Players", new_email_to_players_path(@game), :remote=>true, :method => :get, :class=>'email-button' %>
         </div>
         <% end %>
         <div></div>
