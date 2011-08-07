@@ -1,17 +1,7 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
-
-
-
-
 jQuery(document).ready(function(){
   
   $('#yourResponse input[type=submit]').click(function(){
     $('#summary .loading-indicator').show() ;
-  }) ;
-    
-  $('#new_comment').bind("ajax:success",function(data,status,xhr){
   }) ;
   
   $('.comment').bindCommentActions() ;
@@ -42,9 +32,22 @@ $.fn.bindIndicator = function(elmnt) {
   } else {
     var $ind = $(this).find('.loading-indicator') ;
   }
-  console.log($ind) ;
 
   $(this).click(function(){
     $ind.show() ;
   })
+}
+
+function flashNotice(ntc) {
+  if ($('.feedback .notice').length == 0) {
+    $('.feedback').append("<p class='notice'></p>") ;
+  }
+  $(".feedback .notice").html(ntc).fadeIn(300).delay(1500).fadeOut(1000) ;
+}
+
+function flashAlert(alrt) {
+  if ($('.feedback .alert').length == 0) {
+    $('.feedback').append("<p class='alert'></p>") ;
+  }
+  $(".feedback .alert").html(alrt).fadeIn(300) ;
 }
