@@ -312,9 +312,12 @@ form#new_comment #comment_comment_text {
 #footer a,
 #footer a:visited {
   color : #eee ;
+  border-bottom: 1px dotted #888 ; ;
 }
 
   #footer a:hover {
+    color : #ACF ;
+    border-color: #ACF ;
     text-decoration: none ;
   }
 
@@ -461,7 +464,8 @@ input[type='submit'].delete:hover {
 
 .devise_sessions #content ,
 .devise_registrations #content ,
-.devise_confirmations #content,
+.devise_confirmations #content ,
+.devise_passwords #content ,
 .small-content {
   width : 450px ;
   background-color: #000 ;
