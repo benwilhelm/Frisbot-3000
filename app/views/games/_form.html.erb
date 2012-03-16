@@ -13,11 +13,22 @@
 
   <div class="field">
     <%= f.label :game_time %><br />
-    <%= f.text_field :game_time %>
+    <% 
+    if @game.game_time
+      gtime = @game.game_time.in_time_zone.to_s(:game_time_long) ;  
+    end 
+    
+    if @game.polling_cutoff
+      gcutoff = @game.polling_cutoff.in_time_zone.to_s(:game_time_long) ; 
+    end
+    %>
+
+
+    <%= f.text_field :game_time, :value=>gtime %>
   </div>
   <div class="field">
     <%= f.label :polling_cutoff %><br />
-    <%= f.text_field :polling_cutoff %>
+    <%= f.text_field :polling_cutoff, :value=>gcutoff %>
   </div>
 
 
