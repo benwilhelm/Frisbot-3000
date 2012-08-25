@@ -550,12 +550,8 @@ a.simplemodal-close {
 /* =Responsive Elements
 ========================================*/
 
-@media screen and (max-width:920px) {
-  #content { width: 480px; }
+@media screen and (max-width:800px) {
   .right-col, .left-col { float: none; margin: 10px; width: auto; }
-}
-
-@media screen and (max-width:480px) {
   body { background-color: #999; background-image: none; }
   #content { width: auto; }
   .hide-when-small { display: none; }
