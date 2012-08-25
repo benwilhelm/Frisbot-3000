@@ -1,5 +1,10 @@
 jQuery(document).ready(function(){
   
+  $('.expandable-handle').click(function(e){
+    e.preventDefault() ;
+    $(this).parent().find('.expandable-content').slideToggle() ;
+  }) ;
+  
   $('#yourResponse input[type=submit]').click(function(){
     $('#summary .loading-indicator').show() ;
   }) ;
