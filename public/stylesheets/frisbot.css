@@ -550,10 +550,14 @@ a.simplemodal-close {
 /* =Responsive Elements
 ========================================*/
 
-@media screen and (max-width:800px) {
+@media only screen and (max-width:800px),
+       only screen and (max-width:800px) and (-webkit-min-device-pixel-ratio: 1.5),  
+       only screen and (-o-min-device-pixel-ratio: 3/2),  
+       only screen and (min--moz-device-pixel-ratio: 1.5),  
+       only screen and (min-device-pixel-ratio: 1.5) {
   .right-col, .left-col { float: none; margin: 10px; width: auto; }
   body { background-color: #999; background-image: none; }
-  #content { width: auto; }
+  #content { width: 100% ; }
   .hide-when-small { display: none; }
   .expandable-handle { 
     border : none ;
