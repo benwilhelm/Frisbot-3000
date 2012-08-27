@@ -591,5 +591,14 @@ a.simplemodal-close {
   #userMenu > li:first-child a { padding-left: 0; }
   
   #weather_report { display: none; }
+
+  .devise_sessions #content ,
+  .devise_registrations #content ,
+  .devise_confirmations #content ,
+  .devise_passwords #content ,
+  .small-content {
+    width : auto ;
+  }
+  
 }
 
