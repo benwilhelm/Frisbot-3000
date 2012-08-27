@@ -48,17 +48,7 @@ Frisbot::Application.configure do
   config.active_support.deprecation = :notify
 
   # Devise mailing options  
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => "staging.frisbot3000.com" }
-  config.action_mailer.smtp_settings = {
-    :user_name => 'frisbot3000',
-    :password => 'fris{1981}kie',
-    :domain => "frisbot3000.com",
-    :address => "smtp.sendgrid.net",
-    :port => "587",
-    :authentication => :plain,
-    :enable_starttls_auto => true,
-  }  
+  config.action_mailer.delivery_method = :test
   
   
 end
