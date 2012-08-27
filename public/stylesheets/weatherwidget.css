@@ -1,6 +1,6 @@
 .stickerbody{margin:0px; padding:0px;}
 .wXbody, .wXheader, .wXalert, .wXgrill, .forecast {font-family:Arial, Helvetica; font-size:9px;}
-.wXbody {width:auto; height:275px; margin: 3em 0 ; border:1px black solid; background-color : #FFF ; background-color: rgba(255,255,255,0.6) ; text-align:center; border-radius: 3px ; -webkit-border-radius: 3px ; -moz-border-radius: 3px ; -o-border-radius: 3px ; }
+.wXbody {width:auto; height:275px ; border:1px black solid; background-color : #FFF ; background-color: rgba(255,255,255,0.6) ; text-align:center; border-radius: 3px ; -webkit-border-radius: 3px ; -moz-border-radius: 3px ; -o-border-radius: 3px ; }
 .wXheader {height:35px; line-height:12px; text-align:center; }
 
 .wXalert { background:url(../../../Images/Stickers/v2/300X250/alert.gif) no-repeat; width:280px; color:#ffffff; text-align:center;}
@@ -12,7 +12,7 @@
 .wXgrill #compass  { float:left; height:56px; margin:0px 0px 0px 22px; }
 
 .wXheader #zipcode h1 {font-weight:bold !important; font-size:11px !important;}
-#zipcode a:link, #zipcode a:visited {text-decoration:none; color:#000000;}
+#zipcode a:link, #zipcode a:visited {text-decoration:none; color:#fff;}
 
 #compass { width:56px; text-align:center; }
 
@@ -29,11 +29,11 @@
 #compass #windspeed { font-size:13px; font-weight:bold; margin-top:16px; margin-left:2px;}
 
 .wXbody .wXlinks { clear:both; height:12px; line-height:12px; text-align:center; margin-top:3px; }
-.wXlinks a:link, .wXlinks a:visited {text-decoration:none; color:#0000ff; padding-left:8px; padding-right:8px; font-size:11px;}
+.wXlinks a:link, .wXlinks a:visited {text-decoration:none; color:#48f; padding-left:8px; padding-right:8px; font-size:11px;}
 
 .wXheader h1 { font-size:9px; margin:0px; padding:0px; font-weight:normal; }
-#temperature h2 { font-size:24px; display:inline; height:43px; line-height:43px; margin:0px; padding:0px; color:#000000;}
-#temperature h2.wX100plus { font-size:18px; color:#000000; }
+body #temperature h2 { font-size:24px; display:inline; height:43px; line-height:43px; margin:0px; padding:0px; color:#fff !important;}
+#temperature h2.wX100plus { font-size:18px; color:#fff; }
 
 .forecast {display:block; height:50px; margin-top:6px; }
 .day1 {float:left; width:80px; padding-left:39px;}

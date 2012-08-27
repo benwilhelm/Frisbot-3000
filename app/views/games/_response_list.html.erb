@@ -1,30 +1,36 @@
           <dl id="yesses">
-            <dt>Playing</dt>
+            <dt class="expandable-handle">Playing</dt>
             <% if @game.yesses.count > 0 %>
+              <dd class="expandable-content">
               <% @game.yesses.each do |rsvp| %>
-              <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
+                <%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %><br>
               <% end %>
+              </dd>
             <% else %>
             <dd>No replies yet.</dd>
             <% end %>
           </dl>
           
           <dl id="nos">
-            <dt>Not Playing</dt>
+            <dt class="expandable-handle">Not Playing</dt>
             <% if @game.nos.count > 0 %>
-              <% @game.nos.each do |rsvp| %>
-              <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
-              <% end %>
+              <dd class="expandable-content hide-when-small">
+                <% @game.nos.each do |rsvp| %>
+                <%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %><br>
+                <% end %>
+              </dd>
             <% else %>
-            <dd>No replies yet.</dd>
+            <dd class="expandable-content hide-when-small">No replies yet.</dd>
             <% end %>
           </dl>
           
           <dl id="undecided">
-            <dt>Undecided</dt>
+            <dt class="expandable-handle">Undecided</dt>
             <% if @game.undecideds.count > 0 %>
+              <dd class="expandable-content hide-when-small">
               <% @game.undecideds.each do |rsvp| %>
-              <dd><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></dd>
+                <span><%= rsvp.user.fname.capitalize + ' ' + rsvp.user.lname.capitalize %></span>
               <% end %>
+            </dd>
             <% end %>
           </dl>
