@@ -557,7 +557,7 @@ a.simplemodal-close {
        only screen and (min-device-pixel-ratio: 1.5) {
   .right-col, .left-col { float: none; margin: 10px; width: auto; }
   body { background-color: #999; background-image: none; }
-  #content { width: 100% ; }
+  #content { width: auto; }
   .hide-when-small { display: none; }
   .expandable-handle { 
     border : none ;
@@ -591,3 +591,18 @@ a.simplemodal-close {
   #userMenu > li:first-child a { padding-left: 0; }
 }
 
+@media only screen and (min-width: 800px) and (max-width:959px) {
+  #content { width: 800px; }
+}
+
+@media only screen and (min-width: 600px) and (max-width:799px) {
+  #content { width: 600px; }
+}
+
+@media only screen and (min-width: 400px) and (max-width:599px) {
+  #content { width: 400px; }
+}
+
+@media only screen and (min-width: 200px) and (max-width:399px) {
+  #content { width: 200px; }
+}
