@@ -589,5 +589,7 @@ a.simplemodal-close {
   #welcome { display: none }
   #userMenu { float: none; margin: 0; padding: 0; }
   #userMenu > li:first-child a { padding-left: 0; }
+  
+  #weather_report { display: none; }
 }
 
