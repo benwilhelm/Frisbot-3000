@@ -21,6 +21,8 @@
           <% if user_signed_in? %>
             <% @comment = Comment.new(:user_id=>current_user.id, :game_id => @game.id) %>
             <%= render :partial => 'comments/form' %>
+          <% else %>
+            <%= render :partial => 'what_is_frisbot' %>
           <% end %>
         
         </div><!-- #comments -->          				   

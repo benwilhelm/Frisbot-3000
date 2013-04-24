@@ -125,8 +125,9 @@ a, a:visited {
 
 .right-col {
   float : right ;
-  width : 400px ;
+  width : 380px ;
   margin-bottom: 20px;
+  padding: 10px
 }
 
 .left-col {
@@ -250,7 +251,7 @@ a, a:visited {
   
 .trans-block {
   background-color: #eee ;
-  background-color: rgba(0,0,0,.5) ;
+  background-color: rgba(0,0,0,.65) ;
   color: #FFF ;
 
   -webkit-border-radius: 10px ;
@@ -329,6 +330,8 @@ form#new_comment #comment_comment_text {
 
 /* =Misc 
 ============================================== */
+
+div.fb-like { color: #fff; }
 
 .clear {
   clear : both ;
@@ -472,13 +475,12 @@ input[type='submit'].delete:hover {
 ========================================*/
 
 .devise_sessions #content ,
-.devise_registrations #content ,
 .devise_confirmations #content ,
 .devise_passwords #content ,
 .small-content {
   width : 450px ;
   background-color: #000 ;
-  background-color: rgba(0,0,0,0.4) ;
+  background-color: rgba(0,0,0,0.65) ;
   color: #FFF ;
   margin : 2.5em auto 2em ; ;
   padding : 1em ;
