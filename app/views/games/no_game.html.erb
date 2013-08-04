@@ -8,6 +8,7 @@
     <%= link_to "Log In", new_user_session_path %> | 
     <%= link_to "Sign Up", new_user_registration_path %>
     <%= render :partial => 'what_is_frisbot' %>
+    <%= render :partial => 'fb_like' %>
   <% end %>
   
   <% if user_signed_in? and current_user.admin %>
