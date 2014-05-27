@@ -6,3 +6,4 @@ log/*.log
 tmp/
 .DS_Store
 _CLOAK
+config/environments/production.rb
